@@ -29,8 +29,7 @@ function getApiData() {
     passwordEncoded = encodeURIComponent(_password)
     
     token = {
-        "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTYzMDk3NDg4NiwiZXhwIjoxNjMwOTc4NDg2LCJuYmYiOjE2MzA5NzQ4ODYsImp0aSI6IjJiNjg2M2MzN2Y2NjU0ZTEiLCJzdWIiOiJtb25hc2gtdW5pdmVyc2l0eSIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.tsW9jXNsEts-rhINlUX_51-Qwosdi6ZOE4JX9kjh0vg",
-        "expires_in":3600,
+        "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTYzMDk4MDYxMiwiZXhwIjoxNjMwOTg0MjEyLCJuYmYiOjE2MzA5ODA2MTIsImp0aSI6IjlmODlkZmY3ZDNmYTA4MjAiLCJzdWIiOiJtb25hc2gtdW5pdmVyc2l0eSIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.YW-8RfjDQRCvAMmxwbUxpgOYfP40pli91SYXclG1FeM",        "expires_in":3600,
         "token_type":"bearer"
     }
     
@@ -40,14 +39,14 @@ function getApiData() {
     let url = `https://pfa.foreca.com`;
 
     // Token
-    // getToken(usernameEncoded, passwordEncoded)
+    // getToken(url, usernameEncoded, passwordEncoded)
 
     // Location search
     // Locations and associated identifiers matching a search query.
     // Can be used as alternatives to coordinates.
     let cityToSearch = 'Melbourne'
     let countryCode = 'AU'
-    //locationSearch(url, cityToSearch, countryCode, tokenEncoded)
+    locationSearch(url, cityToSearch, countryCode, tokenEncoded)
 
     // Location info
     // Location metadata
@@ -95,7 +94,7 @@ function locationSearch(url, cityToSearch, countryCode, tokenEncoded) {
     // Location search
     // Locations and associated identifiers matching a search query.
     // Can be used as alternatives to coordinates.
-    let paramsLocSearch = `/api/v1/location/search/${cityToSearch}?country=${countryCode}&token=${tokenEncoded}`;
+    let paramsLocSearch = `/api/v1/location/search/${cityToSearch}?country=${countryCode}&token=${tokenEncoded}`;//&callback=testCallback`;
     let scriptLocSearch = document.createElement('script');
     scriptLocSearch.src = url + paramsLocSearch;
     document.body.appendChild(scriptLocSearch);
@@ -158,9 +157,10 @@ function daily(url, location, tokenEncoded) {
 }
 
 // Callback???
-function newToken(createdToken) {
+function testCallback(stuff) {
     console.log(1);
-    console.log(createdToken);
+    console.log(stuff);
+    document.getElementById("weather").innerHTML = stuff;
 }
 
 
