@@ -1,75 +1,98 @@
 class User {
-    constructor(username,password){
-        this.username = username;
-        this.password = password;
-        this.IPaddress = 0;
-        this.authorised = false;
-        this.authorised_key = " ";
-        this.watch_list = [];
-    }
-    get username(){
-        return username
-    }
-    get password(){
-        return password
-    }
-    add_note(note){
+  constructor (_username, _password) {
+    this.username = _username;
+    this.password = _password;
+    this.IPaddress = 0;
+    this.authorised = false;
+    this.authorised_key = '';
+    this.watchList = [];
+  }
 
-    }
-    add_Pinpoints(){
+  get username () {
+    return _username;
+  }
 
-    }
-    remove_Pinpoints(){
+  get password () {
+    return _password;
+  }
 
-    } 
-    remove_note(note){
+  addNote (note) {
 
-    }
-    alert(){
+  }
 
-    }
-    // how to do fromdata?? 
+  addPinpoints () {
+
+  }
+
+  removePinpoints () {
+
+  }
+  removeNote (note) {
+
+  }
+
+  alert () {
+
+  }
+
+ // how to do fromdata??
 }
 
-class User_list {
-    constructor(users){
-        this.users = [];
-        this.Authorised_users = [];
-    }
-    get_users(){
+class UserList {
+  constructor (_users) {
+    this.users = [];
+    this.authorisedUser = [];
+  }
 
-    }
-    get_Authorised_user(){
+  get users () {
 
-    }
-    addUser(username){
+  }
 
-    }
-    getUser(username){
+  get authorisedUser () {
 
-    }
+  }
+
+  addUser (username) {
+
+  }
+
+  getUser (username) {
+
+  }
+
+  //fromData (not sure)
+
 }
 
-class Pin_points {
-    constructor(username, watchlist, coordinates){
-        this.coordinates = [];
-        this.name = "";
-        this.note = "";
-    }
-    get_coordinates(){
+class pinPoints {
+  constructor (_username, _watchList, _coordinates) {
+    this.coordinates = [];
+    this.name = '';
+    this.note = '';
+  }
 
-    }
-    get_name(){
+  get coordinates () {
 
-    }
-    get_note(){
+  }
 
-    }
-    set_name(newName){
+  get name () {
 
-    }
-    set_note(newNote){
+  }
 
-    }
-    
+  get note () {
+
+  }
+
+  set name (newName) {
+
+  }
+
+  set note (newNote) {
+
+  }
+  // not sure if coordinares is typo
+  saveCoordinares (_username, _watchList, _coordinates) {
+
+  }
+
 }
