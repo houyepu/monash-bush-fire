@@ -20,32 +20,149 @@ function getApiData() {
     // Retrieve input from html page
     //let inputRef = document.getElementById("weather");
     //let input = inputRef.value;
-    input = 'Australia'
-    user = 'monash-university'
-    pass = 'CvdYP1GCPxyy'
-    expire = 1
+
+    // API user info
+    _username = 'monash-university'
+    _password = 'CvdYP1GCPxyy'
+
+    usernameEncoded = encodeURIComponent(_username)
+    passwordEncoded = encodeURIComponent(_password)
+    
     token = {
-        "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTYzMDkyNTc5NSwiZXhwIjoxNjMwOTI5Mzk1LCJuYmYiOjE2MzA5MjU3OTUsImp0aSI6IjJmNmZiYWEzZjc1YzEzN2QiLCJzdWIiOiJtb25hc2gtdW5pdmVyc2l0eSIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.5-GYdrKT1CVV5QXoi7C2XU2nJAaCZLtjVUOIR-HFBRk",
+        "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTYzMDk3NDg4NiwiZXhwIjoxNjMwOTc4NDg2LCJuYmYiOjE2MzA5NzQ4ODYsImp0aSI6IjJiNjg2M2MzN2Y2NjU0ZTEiLCJzdWIiOiJtb25hc2gtdW5pdmVyc2l0eSIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.tsW9jXNsEts-rhINlUX_51-Qwosdi6ZOE4JX9kjh0vg",
         "expires_in":3600,
         "token_type":"bearer"
     }
-
-    //Data for foreca API
+    
+    tokenEncoded = encodeURIComponent(token.access_token)
+    
+    // Accessing foreca API data
     let url = `https://pfa.foreca.com`;
-    let params = `/authorize/token?user=${user}&password=${pass}&callback=newToken`;//&callback=showAirports`;
-    //Create script
-    let script1 = document.createElement('script');
-    script1.src = url + params;
-    document.body.appendChild(script1);
 
-    params3 = `/api/v1/location/search/:query?token=${token.access_token}&country=United Kingdom`
-    let script3 = document.createElement('script');
-    script3.src = url + params3;
-    document.body.appendChild(script3);
+    // Token
+    // getToken(usernameEncoded, passwordEncoded)
+
+    // Location search
+    // Locations and associated identifiers matching a search query.
+    // Can be used as alternatives to coordinates.
+    let cityToSearch = 'Melbourne'
+    let countryCode = 'AU'
+    //locationSearch(url, cityToSearch, countryCode, tokenEncoded)
+
+    // Location info
+    // Location metadata
+    let location = 102158177 //"Longitude,latitude" or id from the location endpoint
+    // locationInfo(url, location,tokenEncoded)
+
+    // Observations
+    // Observations from a nearby representative weather stations
+    location = 102158177 //"Longitude,latitude" or id from the location endpoint
+    // observations(url, location,tokenEncoded)
+    
+    // Current
+    // Current weather estimate
+    location = 102158177 //"Longitude,latitude" or id from the location endpoint
+    //current(url, location, tokenEncoded)
+
+    // Nowcast
+    // 3-hour forecast in 15-minute time steps. The values represent the conditions
+    // at the associated time stamp unless otherwise specified.
+    location = 102158177 //"Longitude,latitude" or id from the location endpoint
+    //nowcast(url, location, tokenEncoded)
+
+    // Hourly
+    // Hourly forecasts. The values represent the conditions at the associated time 
+    // stamp unless otherwise specified.
+    location = 102158177 //"Longitude,latitude" or id from the location endpoint
+    //hourly(url, location, tokenEncoded)
+
+    // Daily
+    // Daily forecasts
+    location = 102158177 // "Longitude,latitude" or id from the location endpoint
+    //daily(url, location, tokenEncoded)
 
 }
-getApiData()
 
+function getToken(url, usernameEncoded, passwordEncoded) {
+    // Token
+    let paramsToken = `/authorize/token?user=${usernameEncoded}&password=${passwordEncoded}`;//&callback=showAirports`;
+    let scriptToken = document.createElement('script');
+    scriptToken.src = url + paramsToken;
+    document.body.appendChild(scriptToken);
+}
+    
+function locationSearch(url, cityToSearch, countryCode, tokenEncoded) {
+    // Location search
+    // Locations and associated identifiers matching a search query.
+    // Can be used as alternatives to coordinates.
+    let paramsLocSearch = `/api/v1/location/search/${cityToSearch}?country=${countryCode}&token=${tokenEncoded}`;
+    let scriptLocSearch = document.createElement('script');
+    scriptLocSearch.src = url + paramsLocSearch;
+    document.body.appendChild(scriptLocSearch);
+}
+    
+function locationInfo(url, location,tokenEncoded) {
+    // Location info
+    // Location metadata
+    let paramsLocInfo = `/api/v1/location/${location}?token=${tokenEncoded}`;
+    let scriptLocInfo = document.createElement('script');
+    scriptLocInfo.src = url + paramsLocInfo;
+    document.body.appendChild(scriptLocInfo);
+}
+    
+function observations(url, location,tokenEncoded) {
+    // Observations
+    // Observations from a nearby representative weather stations
+    let paramsObs = `/api/v1/observation/latest/${location}?token=${tokenEncoded}`;
+    let scriptObs = document.createElement('script');
+    scriptObs.src = url + paramsObs;
+    document.body.appendChild(scriptObs);
+}
+
+function current(url, location, tokenEncoded) {
+    // Current
+    // Current weather estimate
+    let paramsCurr = `/api/v1/current/${location}?token=${tokenEncoded}`;
+    let scriptCurr = document.createElement('script');
+    scriptCurr.src = url + paramsCurr;
+    document.body.appendChild(scriptCurr);
+}
+
+function nowcast(url, location, tokenEncoded) {
+    // Nowcast
+    // 3-hour forecast in 15-minute time steps. The values represent the conditions
+    // at the associated time stamp unless otherwise specified.
+    let paramsNow = `/api/v1/forecast/15minutely/${location}?token=${tokenEncoded}`;
+    let scriptNow = document.createElement('script');
+    scriptNow.src = url + paramsNow;
+    document.body.appendChild(scriptNow);
+}
+
+function hourly(url, location, tokenEncoded) {
+    // Hourly
+    // Hourly forecasts. The values represent the conditions at the associated time 
+    // stamp unless otherwise specified.
+    let paramsHourly = `/api/v1/forecast/hourly/${location}?token=${tokenEncoded}`;
+    let scriptHourly = document.createElement('script');
+    scriptHourly.src = url + paramsHourly;
+    document.body.appendChild(scriptHourly);
+}
+
+function daily(url, location, tokenEncoded) {
+    // Daily
+    // Daily forecasts
+    let paramsDaily = `/api/v1/forecast/daily/${location}?token=${tokenEncoded}`;
+    let scriptDaily = document.createElement('script');
+    scriptDaily.src = url + paramsDaily;
+    document.body.appendChild(scriptDaily);
+}
+
+// Callback???
 function newToken(createdToken) {
-    console.log(createdToken)
+    console.log(1);
+    console.log(createdToken);
 }
+
+
+// On page load
+getApiData()
