@@ -91,7 +91,7 @@ class pinPoints {
 
   }
   // not sure if coordinares is typo
-  saveCoordinares (_username, _watchList, _coordinates) {
+  saveCoordinates (_username, _watchList, _coordinates) {
 
   }
 
