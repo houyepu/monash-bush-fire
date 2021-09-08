@@ -7,7 +7,7 @@ body{
 
 }
 .box{
-    width: 600px;
+    width: 700px;
     padding: 50px;
     border: solid #000000;
     position: absolute;
@@ -16,10 +16,10 @@ body{
     transform: translate(-50%,-50%);
     background: #ffffff;
     text-align: center;
+    border-radius: 15px;
 }
 .box h1{
     color:rgb(0, 0, 0);
-    text-transform: uppercase;
     font-weight: 500;
     text-align: center;
 }
