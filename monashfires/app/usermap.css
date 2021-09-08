@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f7b42c;
+    background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+
+}
+.box{
+    width: 620px;
+    height: 600px;
+    padding: 20px;
+    border: solid #000000;
+    position: absolute;
+    top: 435px;
+    bottom: 100px;
+    left: 1010px;
+    right: 20px;
+    float: right;
+    transform: translate(-50%,-50%);
+    background: #ffffff;
+    text-align: right;
+}
+.box h1{
+    color:rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+}
