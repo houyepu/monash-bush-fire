@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang = "en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <style>
+        .demo-layout-transparent {
+          background-image: linear-gradient(to bottom right, red, yellow);
+        }
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+          /* This background is dark, so we set text to white. Use 87% black instead if
+             your background is light. */
+          color: white;
+        }
+        </style>
+     <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Weather Conditions</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+              <!---<a class="mdl-navigation__link" href="">Link</a>--->
+            </nav>
+          </div>
+        </header>
+        <div class="mdl-layout__drawer">
+          <span class="mdl-layout-title">Weather Conditions</span>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+          </nav>
+        </div>
+        <main class="mdl-layout__content">
+        <form class="box" method= "POST">
+            <!--Weather condition table-->
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-cell mdl-cell--4-col">
+            <div>
+             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
+               <thead>
+                 <tr>
+                   <th class="mdl-data-table__cell--non-numeric"><h5>Current Weather conditions</h5></th>
+                   <td><span class="material-icons">thermostat</span></td>
+               </thead>
+               <tbody id = "weatherTable-origin">
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Temperature</td>
+                   <td>&#8451;</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Humidity</td>
+                   <td>%</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
+                   <td>km/hr</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Wind Gust</td>
+                   <td> knots</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Wind Bearing</td>
+                   <td></td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">UV Index</td>
+                   <td></td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+          <div class="mdl-cell mdl-cell--4-col">
+            <input type="button" name="" value="home" onclick="location.href='map.html';">
+              <!--<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick= "window.location.href = 'usermap.html';" style="margin-left: 940px; margin-top: 20px;">Home</button>-->
+          </div>
+        </form>
+        </main>
+      </div>
+
+</body>
+<script src="libs/dummy.js"></script>
+
+</html>

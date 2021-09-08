@@ -31,10 +31,7 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
+              <!---<a class="mdl-navigation__link" href="">Link</a>--->
             </nav>
           </div>
         </header>
@@ -49,17 +46,16 @@
         </div>
         <main class="mdl-layout__content">
             <!--Login box -->
-          <form class="box" action="signin.html" method= "POST">
-            <img src="img/platypus.png" style = "float: left; margin: 100px 0px 0px -50px;">
-            <h1>Register</h1>
-            <input type="text" name="" placeholder="Enter username">
-            <input type="email" name="" placeholder="Enter email">
-            <input type="password" name="" placeholder="Enter password">
-            <input type="Confirm password" name="" placeholder="Confirm password">
-            <input type="Authorised" name="" placeholder="Enter authorised key">
-            <input type="submit" name="" value="submit" style = "margin-right: 125px">
-            <input type="submit" name="" value="home" style = "margin-right: 125px">
-          </form>
+    <form class="box" method= "POST">
+    <h1>Register</h1>
+    <input type="text" name="" placeholder="Enter username">
+    <input type="email" name="" placeholder="Enter email">
+    <input type="password" name="" placeholder="Enter password">
+    <input type="Confirm password" name="" placeholder="Confirm password">
+    <input type="Authorised" name="" placeholder="Enter authorised key">
+    <input type="button" name="" value="submit" onclick="location.href='signin.html';">
+    <input type="button" name="" value="home" onclick="location.href='map.html';">
+    </form>
         </main>
       </div>
 
