@@ -39,14 +39,14 @@ function getApiData() {
     let url = `https://pfa.foreca.com`;
 
     // Token
-    // getToken(url, usernameEncoded, passwordEncoded)
+    //getToken(url, usernameEncoded, passwordEncoded)
 
     // Location search
     // Locations and associated identifiers matching a search query.
     // Can be used as alternatives to coordinates.
     let cityToSearch = 'Melbourne'
     let countryCode = 'AU'
-    locationSearch(url, cityToSearch, countryCode, tokenEncoded)
+    //locationSearch(url, cityToSearch, countryCode, tokenEncoded)
 
     // Location info
     // Location metadata
@@ -80,11 +80,39 @@ function getApiData() {
     location = 102158177 // "Longitude,latitude" or id from the location endpoint
     //daily(url, location, tokenEncoded)
 
+    
+    let request = new XMLHttpRequest();
+    request.open("GET", url + `/authorize/token?user=${usernameEncoded}&password=${passwordEncoded}`);
+    request.send();
+    request.onload = () => {
+        //console.log(request);
+        if(request.status === 200){
+            console.log(JSON.parse(request.response));
+            temptoken = JSON.parse(request.response).access_token
+        } else{
+            console.log(`error ${request.res}`)
+        }
+    }
+    
+    var temptoken = 1;
+    let request1 = new XMLHttpRequest();
+    request1.open("GET", url + `/api/v1/location/search/${cityToSearch}?country=${countryCode}&token=${temptoken}`);
+    request1.send();
+    request1.onload = () => {
+        //console.log(request);
+        if(request1.status === 200){
+            console.log(JSON.parse(request1.response));
+            
+            
+        } else{
+            console.log(`error ${request1.res}`)
+        }
+    }
 }
 
 function getToken(url, usernameEncoded, passwordEncoded) {
     // Token
-    let paramsToken = `/authorize/token?user=${usernameEncoded}&password=${passwordEncoded}`;//&callback=showAirports`;
+    let paramsToken = `/authorize/token?user=${usernameEncoded}&password=${passwordEncoded}`;//&callback=testCallback`;
     let scriptToken = document.createElement('script');
     scriptToken.src = url + paramsToken;
     document.body.appendChild(scriptToken);
@@ -160,9 +188,26 @@ function daily(url, location, tokenEncoded) {
 function testCallback(stuff) {
     console.log(1);
     console.log(stuff);
-    document.getElementById("weather").innerHTML = stuff;
+    //document.getElementById("weather").innerHTML = stuff;
 }
 
+function apiCall(url,params) {
+    let request = new XMLHttpRequest();
+    request.open("GET", url + params);
+    request.send();
+    request.onload = () => {
+        //console.log(request);
+        if(request.status === 200){
+            return JSON.parse(request.response);
+        } else{
+            console.log(`error ${request.res}`)
+        }
+    }
+}
+
+function home(){
+    a=0
+}
 
 // On page load
 getApiData()
