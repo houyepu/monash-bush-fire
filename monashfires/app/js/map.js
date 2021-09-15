@@ -56,7 +56,7 @@ function getCurrent() {
         fetch(url + `/api/v1/current/${cityId}?token=${token}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data.current)
+            //console.log(data.current)
             updateMap(data.current, i)
         })
     }
@@ -72,7 +72,7 @@ function getCurrent2() {
         fetch(url + `/api/v1/current/${cityId}?token=${token}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data.current)
+            //console.log(data.current)
             updateMap(data.current, i)
         })
     }
@@ -139,4 +139,4 @@ function updateMap(data, i) {
 }
 
 // On page load
-//getToken()
+getToken()
