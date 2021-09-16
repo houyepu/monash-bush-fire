@@ -28,7 +28,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-95%,-50%);
+    transform: translate(-50%,-50%);
     border-radius: 10px;
 }
 .box input[type = "text"],.box input[type = "password"]{
@@ -65,4 +65,17 @@ body{
 }
 .box input[type = "button"]:hover{
     background:#2ecc71;
+}
+.box1{
+    width: 150px;
+    height: 200px;
+    padding: 50px;
+    border: solid #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-260%,-30%);
+    background: #ffffff;
+    text-align: center;
+    border-radius: 15px;
 }

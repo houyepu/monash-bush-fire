@@ -23,7 +23,7 @@ let map1 = new mapboxgl.Map({
     container: 'map',
     center: [133, -28.5], // starting position [lng, lat]
     zoom: 3.4,
-    style: 'mapbox://styles/mapbox/streets-v11'
+    style: 'mapbox://styles/mapbox/satellite-streets-v11'
 });
 
 //Function to access foreca api data [WORK IN PROGRESS]
@@ -56,7 +56,7 @@ function getCurrent() {
         fetch(url + `/api/v1/current/${cityId}?token=${token}`)
         .then(response => response.json())
         .then(data => {
-            //console.log(data.current)
+            //console.log(data)
             updateMap(data.current, i)
         })
     }
@@ -72,7 +72,7 @@ function getCurrent2() {
         fetch(url + `/api/v1/current/${cityId}?token=${token}`)
         .then(response => response.json())
         .then(data => {
-            //console.log(data.current)
+            //console.log(data)
             updateMap(data.current, i)
         })
     }
