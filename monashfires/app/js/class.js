@@ -43,13 +43,14 @@ class PinPoint {
 }
 
 class User {
-  constructor (_username, _password) {
+  constructor (_username, _password,_email) {
     this._username = _username;
     this._password = _password;
     this.IPaddress = 0;
     this.authorised = false;
     this.authorisedKey = '';
     this.watchList = [];
+    this.email = _email
   }
 
   get username () {
@@ -147,29 +148,29 @@ class UserList {
 	}
 
 }
-
+//
 //test class
-let newPinpoint = new PinPoint();
-let newUser = new User('test_user', 'password');
-let testUserList = new UserList();
-testUserList.addUser(newUser);
+  //let newPinpoint = new PinPoint();
+  //let newUser = new User('test_user', 'password');
+  //let testUserList = new UserList();
+  //testUserList.addUser(newUser);
 
-console.log(testUserList)
+  //console.log(testUserList)
 
 
-KEY = 'aboevinoin'
-//Set item to local storage
-let jsonData = JSON.stringify(testUserList);
-localStorage.setItem(KEY,jsonData);
+  //KEY = 'aboevinoin'
+  //Set item to local storage
+  //let jsonData = JSON.stringify(testUserList);
+  //localStorage.setItem(KEY,jsonData);
 
-//Retrieve data using key
-jsonData = localStorage.getItem(KEY);
-let retrievedData = JSON.parse(jsonData);
+  //Retrieve data using key
+  //jsonData = localStorage.getItem(KEY);
+  //let retrievedData = JSON.parse(jsonData);
 
-console.log(retrievedData)
+  //console.log(retrievedData)
 
-let testUserListAfterJSON = new UserList();
-//update the global user
-testUserListAfterJSON.fromData(retrievedData);
+  //let testUserListAfterJSON = new UserList();
+  //update the global user
+  //testUserListAfterJSON.fromData(retrievedData);
 
-console.log(testUserListAfterJSON)
+  //console.log(testUserListAfterJSON)

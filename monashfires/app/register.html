@@ -46,21 +46,26 @@
         </div>
         <main class="mdl-layout__content">
             <!--Login box -->
-          <form class="box" method= "POST">
+          <form class="box" method= "POST" onsubmit="register()">
             <img src="img/platypus.png" style = "float: left; margin: 50px 0px 0px -50px; width: 360px" >
             <h1>Register</h1>
-            <input type="text" name="" placeholder="Enter username">
-            <input type="email" name="" placeholder="Enter email">
-            <input type="password" name="" placeholder="Enter password">
-            <input type="Confirm password" name="" placeholder="Confirm password">
-            <input type="Authorised" name="" placeholder="Enter authorised key">
-            <input type="button" name="" value="submit" onclick="location.href='signin.html';">
-            <input type="button" name="" value="home" onclick="location.href='map.html';">
+            <input type="text" name="" placeholder="Enter username" id="username">
+            <input type="email" name="" placeholder="Enter email" id ="email">
+            <input type="password" name="" placeholder="Enter password" id ="password">
+            <input type="Confirm password" name="" placeholder="Confirm password" id ="Confirm password">
+            <input type="Authorised" name="" placeholder="Enter authorised key" id ="Authorised">
+            <button type="submit"value="submit" id="submit" >submit</button>
+            <!--<input type="button" name="" value="submit" id="submit"> -->
+            <input type="button" name="" value="home" onclick="location.href='map.html';" id="home">
+            
           </form>
         </main>
       </div>
 
+      
+      </script>
 </body>
-<script src="libs/dummy.js"></script>
+<script src="js/class.js"></script>
+<script src ="./register.js"></script>
 
 </html>
