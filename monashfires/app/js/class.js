@@ -6,27 +6,27 @@ class PinPoint {
   }
 
   get coordinates () {
-
+    return this.coordinates;
   }
 
   get name () {
-
+    return this.name;
   }
 
   get note () {
-
+    return this.note;
   }
 
   set coordinates (newCoords) {
-
+    this.coordinates = newCoords;
   }
 
   set name (newName) {
-
+    this.name = newName;
   }
 
   set note (newNote) {
-
+    this.note = newNote;
   }
   // not sure if coordinares is typo
   saveCoordinates (_username, _watchList, _coordinates) {
