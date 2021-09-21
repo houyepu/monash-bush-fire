@@ -7,13 +7,13 @@ body{
 
 }
 .box{
-    width: 620px;
-    height: 600px;
+    width: 520px;
+    height: 700px;
     padding: 20px;
     border: solid #000000;
-    position: relative;
-    top: 52.5%;
-    left: 5%;
+    position: absolute;
+    top: 53%;
+    left: 70%;
     float: right;
     transform: translate(-50%,-50%);
     background: #ffffff;
@@ -26,8 +26,7 @@ body{
     text-align: center;
 }
 .mapdiv{
-    position: relative;
-    top: 25%;
+    top: 50%;
     left: 25%;
     transform: translate(-50%,-50%);
     border-radius: 10px;
