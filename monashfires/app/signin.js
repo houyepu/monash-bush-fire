@@ -7,8 +7,9 @@ function signin(){
     
   
     //Retrieve data using key
-    jsonData = localStorage.getItem(KEY);
-    let retrievedData = JSON.parse(jsonData);
+    //jsonData = localStorage.getItem(KEY);
+    //let retrievedData = JSON.parse(jsonData);
+    retrievedData = User_List;
   
     console.log(retrievedData)
     if (document.getElementById('authorised').checked) {
@@ -35,3 +36,4 @@ function signin(){
     }
     
 }
+console.log(User_List)
