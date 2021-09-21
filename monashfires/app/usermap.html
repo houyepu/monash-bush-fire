@@ -85,9 +85,52 @@
           zoom: 3.4,
           style: 'mapbox://styles/mapbox/satellite-streets-v11'
           });
-          map.on('mousemove', (e) => {
+          map.on('click', (e) => {
           document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
+          let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
+          marker1.setLngLat([e.lngLat])
+          marker1.addTo(map);
+          let popup = new mapboxgl.Popup({ offset: 45 });
+
+          let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric"><h6>${capitalCity.name[i]}</h6></th>
+                        <td><span class="material-icons">thermostat</span></td>
+                    </thead>
+                    <tbody id = "weatherTable-origin">
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Temperature</td>
+                        <td>${data.temperature}&#8451;</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Humidity</td>
+                        <td>${data.relHumidity}%</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
+                        <td>${data.windSpeed} km/h</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Wind Gust</td>
+                        <td>${data.windGust} knots</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">UV Index</td>
+                        <td>${data.uvIndex}</td>
+                    </tr>
+                    </tbody>
+                </table>`
+          // Set popup text to HTML
+          popup.setHTML(desc);
+          // Attach the popup to the marker
+          marker1.setPopup(popup)
+          // Add the marker to the map
+          marker1.addTo(map1);
+          // Add the popup to the map
+          // popup.addTo(map1);
           });
+          
       </script>
     </main>
   </div>
