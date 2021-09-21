@@ -1,4 +1,4 @@
-KEY = 'aboevinoin'
+USERS_LIST_KEY = 'aboevinoin'
 class PinPoint {
   constructor () {
     this.coordinates = [];
