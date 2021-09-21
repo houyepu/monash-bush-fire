@@ -1,3 +1,4 @@
+KEY = 'aboevinoin'
 class PinPoint {
   constructor () {
     this.coordinates = [];
@@ -43,11 +44,11 @@ class PinPoint {
 }
 
 class User {
-  constructor (_username, _password,_email) {
+  constructor (_username, _password,_email,_authorised) {
     this._username = _username;
     this._password = _password;
     this.IPaddress = 0;
-    this.authorised = false;
+    this.authorised = _authorised;
     this.authorisedKey = '';
     this.watchList = [];
     this.email = _email
@@ -110,25 +111,26 @@ class User {
 class UserList {
   constructor () {
     this._users = [];
-    //this.authorisedUser = [];
+    this._authorisedUser = [];
   }
 
   get users () {
-
+    return this._users;
   }
 
   get authorisedUser () {
-
+    return this._authorisedUser;
   }
-
+ 
   addUser (newUser) {
-    this._users.push(newUser)
+    this._users.push(newUser);
   }
 
-  getUser (newUser) {
-
+  addAuthorised (newUser){
+    this._authorisedUser.push(newUser);
   }
 
+ 
   fromData(data)
 	{
     //Turns object into class data
@@ -148,6 +150,10 @@ class UserList {
 	}
 
 }
+
+
+User_list=new(UserList);
+  
 //
 //test class
   //let newPinpoint = new PinPoint();
