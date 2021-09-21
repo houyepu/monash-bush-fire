@@ -1,5 +1,6 @@
-KEY = 'register';
+User_List=new UserList();
 
+KEY = 'register';
 function register(){
     let Authorised_code=123
     event.preventDefault();
@@ -24,7 +25,7 @@ function user(username,email,password){
     let newUser = new User(username, password,email);
     //bugs 1 how to add another user without initialise a new userlist class??
     //let User_List=new UserList();
-    User_List.addUser(newUser)
+    User_List.addUser(newUser);
     //User_List.addUser(newUser)
     let data = User_List;
     updateLocalStorage(data);
@@ -35,7 +36,7 @@ function authorised_user(username, password,email){
     let newUser = new User(username, password,email,true);
     //bugs 1 how to add another user without initialise a new userlist class??
     //var User_List= new UserList();
-    Authorised_User_List.addAuthorised(newUser)
+    User_List.addAuthorised(newUser);
     let data = User_List;
     updateLocalStorage(data);
     location.href = 'signin.html';

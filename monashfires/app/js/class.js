@@ -151,8 +151,6 @@ class UserList {
 
 }
 
-
-User_list=new(UserList);
   
 //
 //test class
