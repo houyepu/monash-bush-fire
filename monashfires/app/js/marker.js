@@ -1,19 +1,29 @@
 var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 
  var html = '<table>';
- html += '<tr>';
- for( var j in observation_data[0] ) {
-  html += '<th>' + j + '</th>';
+ html += '<tr>'+'<th>' + "Station " + '</th>';
+ html += '<th>' + "Temperature " + '</th>';
+ html += '<th>' + "Humidity" + '</th>';
+ html += '<th>' + "Wind Speed   " + '</th>';
+ html += '<th>' + " Wind Gust  " + '</th>'+'</tr>';
+
+ for(var i = 0; i<observation_data.length;i++){
+  html += '<tr>' + '<td>' + observation_data[i].station + '</td>' +
+  '<td>' + observation_data[i].temperature + '</td>' +
+  '<td>' + observation_data[i].relHumidity + '</td>' +
+  '<td>' + observation_data[i].windSpeed + '</td>' +
+  '<td>' + observation_data[i].windGust + '</td>';
+  html += '</tr>';
  }
- html += '</tr>';
+/*
  for( var i = 0; i < observation_data.length; i++) {
   html += '<tr>';
-  for( var j in observation_data[i] ) {
+  for( var j in observation_data[j] ) {
     html += '<td>' + observation_data[i][j] + '</td>';
   }
   html += '</tr>';
  }
- html += '</table>';
+ html += '</table>';*/
  document.getElementById('container').innerHTML = html;
 
  var retrieved_coords = JSON.parse(window.localStorage.getItem('coordinates'));
