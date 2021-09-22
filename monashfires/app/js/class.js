@@ -8,6 +8,7 @@ class PinPoint {
   }
 
   get coordinates () {
+<<<<<<< HEAD
 
     return this.coordinates;
 
@@ -41,6 +42,29 @@ class PinPoint {
 
     this.note = newNote;
 
+=======
+    return this.coordinates;
+  }
+
+  get name () {
+    return this.name;
+  }
+
+  get note () {
+    return this.note;
+  }
+
+  set coordinates (newCoords) {
+    this.coordinates = newCoords;
+  }
+
+  set name (newName) {
+    this.name = newName;
+  }
+
+  set note (newNote) {
+    this.note = newNote;
+>>>>>>> master
   }
 
   saveCoordinates (_username, _watchList, _coordinates) {

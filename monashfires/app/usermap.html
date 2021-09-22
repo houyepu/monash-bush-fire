@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,15 +14,31 @@
 
   <style type="text/css">
     #map {
-        width: 650px;
-        height: 650px
+        position: absolute;
+        width: 750px;
+        height: 750px
     }
+    
   </style>
 </head>
 
 <body>
   <!-- Uses a transparent header that draws on top of the layout's background -->
   <style>
+  #info {
+    display: table;
+    position: relative;
+    margin: 0px auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(97, 224, 233);
+    background: #fff;
+  }
   .demo-layout-transparent {
     background-image: linear-gradient(to bottom right, red, yellow);
   }
@@ -57,20 +74,75 @@
     </div>
     <main class="mdl-layout__content">
       <!--Weather-->
-      <div id="weather">weather_test</div>
       <!--Map-->
-    </main>
-      <div id="map">A</div><br>
+      <pre id=info> </pre>
+      <div class="mapdiv" id="map"></div>
+      <script>
+        mapboxgl.accessToken = "pk.eyJ1IjoidGRveTAwMDEiLCJhIjoiY2t0NnhvNzI4MG40dDJ1bzB4dHoyemhqMSJ9.5JRWGF3yYfWhd3SEqa1Xfg";
+        let map = new mapboxgl.Map({
+          container: 'map',
+          center: [133, -28.5], // starting position [lng, lat]
+          zoom: 3.4,
+          style: 'mapbox://styles/mapbox/satellite-streets-v11'
+          });
+          map.on('click', (e) => {
+          document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
+          let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
+          marker1.setLngLat([e.lngLat])
+          marker1.addTo(map);
+          let popup = new mapboxgl.Popup({ offset: 45 });
+
+          let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric"><h6>${capitalCity.name[i]}</h6></th>
+                        <td><span class="material-icons">thermostat</span></td>
+                    </thead>
+                    <tbody id = "weatherTable-origin">
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Temperature</td>
+                        <td>${data.temperature}&#8451;</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Humidity</td>
+                        <td>${data.relHumidity}%</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
+                        <td>${data.windSpeed} km/h</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Wind Gust</td>
+                        <td>${data.windGust} knots</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">UV Index</td>
+                        <td>${data.uvIndex}</td>
+                    </tr>
+                    </tbody>
+                </table>`
+          // Set popup text to HTML
+          popup.setHTML(desc);
+          // Attach the popup to the marker
+          marker1.setPopup(popup)
+          // Add the marker to the map
+          marker1.addTo(map1);
+          // Add the popup to the map
+          // popup.addTo(map1);
+          });
+          
+      </script>
     </main>
   </div>
   
   
 </body>
 <script src="js/dummy.js"></script>
-<script src="js/map.js"></script>
+</script>
+
+
 <!--Pinpoints-->
 <form class="box" method= "POST">
-  <h1>Pinpoints<br><br><br><br><br><br></h1>
-  </form>
-
+  <h1>Pinpoints<br></h1>
+</form>
 </html>
