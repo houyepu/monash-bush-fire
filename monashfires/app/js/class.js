@@ -1,4 +1,5 @@
-KEY = 'aboevinoin'
+USERS_LIST_KEY = 'aboevinoin'
+
 class PinPoint {
   constructor () {
     this.coordinates = [];
@@ -144,6 +145,16 @@ class UserList {
 			newUser.fromData(dataArray[i]);
 			// then adding this user into the _trip array
 			this._users.push(newUser);
+    }
+    let dataArray2 = data._authorisedUser;
+    for(let i = 0; i < dataArray2.length; i++)
+    {
+      // create the user class instance
+      let newUser = new User();
+      // restoring the user at index i
+      newUser.fromData(dataArray2[i]);
+      // then adding this user into the _trip array
+      this._authorisedUser.push(newUser);
         }
         //Values for all the user-related data
         //None
@@ -151,8 +162,6 @@ class UserList {
 
 }
 
-
-User_list=new(UserList);
   
 //
 //test class
@@ -180,3 +189,53 @@ User_list=new(UserList);
   //testUserListAfterJSON.fromData(retrievedData);
 
   //console.log(testUserListAfterJSON)
+
+  function updateLocalStorage(data, KEY)
+{   
+    localStorage.setItem(KEY, JSON.stringify(data));
+}
+
+//Fuction to check if Data Exists in Local Storage
+function checkIfDataExistsLocalStorage(KEY)
+{
+    //Access stored data
+    let dataStored = localStorage.getItem(KEY);
+
+    //Check if data is valid
+    //ie if not undefined, null, NaN AND not blank string
+    if (dataStored !== undefined && dataStored !== null && dataStored !== NaN && dataStored !== "")
+    {
+        //Valid data
+        return true;
+    }
+    else
+    {
+        //Invalid data
+        return false;
+    }
+}
+
+// Function to get the data in local storage
+function getDataLocalStorage(KEY)
+{
+    //Retrieve data using key
+    let jsonData = localStorage.getItem(KEY);
+    //Parsing it back into object
+    let userData = JSON.parse(jsonData);
+    //return data
+    return userData;
+}
+
+//On page load
+// Check if user list exists
+if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
+    User_List = new UserList();
+
+    UserListData = getDataLocalStorage(USERS_LIST_KEY);
+
+    User_List.fromData(UserListData);
+    console.log(User_List)
+}
+else {
+    User_List = new UserList();
+}
