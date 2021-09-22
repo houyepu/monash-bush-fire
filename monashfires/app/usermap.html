@@ -77,6 +77,7 @@
       <!--Map-->
       <pre id=info> </pre>
       <div class="mapdiv" id="map"></div>
+      
       <script>
 
         const _username = 'monash-university'
@@ -97,17 +98,32 @@
               getCurrent()
           })
           var coordinate = [];
+          var observation_data = [];
           //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
-      function getCurrent() {
+      
+      
+      
+          function getCurrent() {
         //coordinates.id.length
         //coordinates.id[i]
         for (let i = 0; i < coordinate.length; i++) {
+          if (i == 0){
+            observation_data = [];
+          }
           user_coordinates = coordinate[i];
           fetch(url + `/api/v1/observation/latest/${user_coordinates}?token=${token}`)
           .then(response => response.json())
           .then(data => {
-            console.log(data)
-            //updateMap(data.observation,i)
+          console.log(data)
+          observation_data.push(data.observations[0])
+          // Put the object into storage
+          localStorage.setItem('observation_data', JSON.stringify(observation_data));
+
+          // Retrieve the object from storage
+          var retrievedObject = localStorage.getItem('observation_data');
+
+          console.log('retrievedObject: ', JSON.parse(retrievedObject));
+          //updateMap(data.observation,i)
           })
         }
         //getCurrent2()
@@ -126,13 +142,23 @@
           let coords = e.lngLat;
           coordinate.push(coords)
           console.log(coordinate)
+          
+          localStorage.setItem('coordinates', JSON.stringify(coordinate));
+
+          // Retrieve the object from storage
+          var retrieved_coords = JSON.parse(localStorage.getItem('coordinates'));
+
+          console.log('retrieved coordinates: ', retrieved_coords);
+
           getCurrent()
+          for (let i = 0; i < retrieved_coords.length; i++) {
 
           let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
-          new_marker.setLngLat(coords);
+          console.log(retrieved_coords[i])
+          new_marker.setLngLat(retrieved_coords[i]);
           new_marker.addTo(map);
           //let popup = new mapboxgl.Popup({ offset: 45 });
-          
+          /*
           new_marker.bindPopup("Popup content");
           new_marker.on('mouseover', (e) => {
             this.openPopup();
@@ -140,39 +166,17 @@
           new_marker.on('mouseout', (e) => {
             this.closePopup();
           });
-
-          let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
-                    <tbody id = "weatherTable-origin">
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Temperature</td>
-                        <td>${data.temperature}&#8451;</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Humidity</td>
-                        <td>${data.relHumidity}%</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
-                        <td>${data.windSpeed} km/h</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Wind Gust</td>
-                        <td>${data.windGust} knots</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">UV Index</td>
-                        <td>${data.uvIndex}</td>
-                    </tr>
-                    </tbody>
-                </table>`
+          */
           // Set popup text to HTML
-          popup.setHTML(desc);
+         // popup.setHTML(desc);
+          
           // Attach the popup to the marker
-          new_marker.setPopup(popup)
+         // new_marker.setPopup(popup)
           // Add the marker to the map
           new_marker.addTo(map);
           // Add the popup to the map
           // popup.addTo(map1);
+        }
           });
       </script>
     </main>
@@ -185,7 +189,42 @@
 
 
 <!--Pinpoints-->
+
 <form class="box" method= "POST">
   <h1>Pinpoints<br></h1>
+  <div id="container"></div>
+
+  <!--
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-responsive" style="border-collapse: collapse; padding: 15px;">
+    <thead>
+      <tr>
+          <th class="mdl-data-table__cell--non-numeric"><h6>coordinates:<script>coordinate[i]</script></h6></th>
+          <td><span class="material-icons">thermostat</span></td>
+      </thead>
+    <tbody id = "weatherTable-origin">
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">Temperature</td>
+        <td>${data.temperature}&#8451;</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">Humidity</td>
+        <td>${data.relHumidity}%</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
+        <td>${data.windSpeed} km/h</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">Wind Gust</td>
+        <td>${data.windGust} knots</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">UV Index</td>
+        <td>${data.uvIndex}</td>
+    </tr>
+    </tbody>
+</table>
+-->
+<script type="text/javascript" src = "js/marker.js">updateMap(data.observation,i)</script>
 </form>
 </html>

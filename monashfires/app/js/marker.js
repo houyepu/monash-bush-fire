@@ -1,16 +1,17 @@
-let markersStorage = [];
+var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 
-let locations = [
-    {
-      coords: [lng, lat],
-      display: `${name}<br><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2"><input type="checkbox" onchange="checkboxLocation(${lat},${lng},'${aCode}');" id="checkbox-2" class="mdl-checkbox__input"><span class="mdl-checkbox__label">Select</span></label>`
-    }
-  ]
-  
-for (let i = 0; i<savedRoutes.theRoutes[k]._route.route.length; i++)
-    {
-      let location = savedRoutes.theRoutes[k]._route.route[i];
-      let marker = new mapboxgl.Marker({"color": `${color}`});
-      marker.setLngLat(location.coordinates);
-      marker.addTo(map);
-    }
+ var html = '<table>';
+ html += '<tr>';
+ for( var j in observation_data[0] ) {
+  html += '<th>' + j + '</th>';
+ }
+ html += '</tr>';
+ for( var i = 0; i < observation_data.length; i++) {
+  html += '<tr>';
+  for( var j in observation_data[i] ) {
+    html += '<td>' + observation_data[i][j] + '</td>';
+  }
+  html += '</tr>';
+ }
+ html += '</table>';
+ document.getElementById('container').innerHTML = html;
