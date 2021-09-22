@@ -88,8 +88,8 @@
           map.on('click', (e) => {
           document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
           let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
-          marker1.setLngLat([e.lngLat])
-          marker1.addTo(map);
+          new_marker.setLngLat([e.lngLat])
+          new_marker.addTo(map);
           let popup = new mapboxgl.Popup({ offset: 45 });
 
           let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
@@ -124,9 +124,9 @@
           // Set popup text to HTML
           popup.setHTML(desc);
           // Attach the popup to the marker
-          marker1.setPopup(popup)
+          new_marker.setPopup(popup)
           // Add the marker to the map
-          marker1.addTo(map1);
+          new_marker.addTo(map);
           // Add the popup to the map
           // popup.addTo(map1);
           });
