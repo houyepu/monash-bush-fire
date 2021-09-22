@@ -78,6 +78,42 @@
       <pre id=info> </pre>
       <div class="mapdiv" id="map"></div>
       <script>
+
+        const _username = 'monash-university'
+        const _password = 'CvdYP1GCPxyy'
+
+        const _usernameEncoded = encodeURIComponent(_username)
+        const _passwordEncoded = encodeURIComponent(_password)
+
+        var token = null
+
+        const url = `https://pfa.foreca.com`;
+        fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncoded}`)
+          .then(response => response.json())
+          .then(data => {
+              token = data.access_token;
+              token = encodeURIComponent(token)
+              console.log(token)
+              getCurrent()
+          })
+          var coordinate = [];
+          //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
+      function getCurrent() {
+        //coordinates.id.length
+        //coordinates.id[i]
+        for (let i = 0; i < coordinate.length; i++) {
+          user_coordinates = coordinate[i];
+          fetch(url + `/api/v1/observation/latest/${user_coordinates}?token=${token}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            //updateMap(data.observation,i)
+          })
+        }
+        //getCurrent2()
+      }
+
+        //https://pfa.foreca.com/api/v1/observation/latest/137.7292133105741,-19.350339784093876?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTYzMjI3NzIyMCwiZXhwIjoxNjMyMjgwODIwLCJuYmYiOjE2MzIyNzcyMjAsImp0aSI6IjA4YzAzNDU5YjJmMDM4MTciLCJzdWIiOiJtb25hc2gtdW5pdmVyc2l0eSIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.jupHPVHT7qnKJ8_3dy0kinoHjKGl5QatK5dI2IlLrJ8
         mapboxgl.accessToken = "pk.eyJ1IjoidGRveTAwMDEiLCJhIjoiY2t0NnhvNzI4MG40dDJ1bzB4dHoyemhqMSJ9.5JRWGF3yYfWhd3SEqa1Xfg";
         let map = new mapboxgl.Map({
           container: 'map',
@@ -87,8 +123,12 @@
           });
           map.on('click', (e) => {
           document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
-          let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
           let coords = e.lngLat;
+          coordinate.push(coords)
+          console.log(coordinate)
+          getCurrent()
+
+          let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
           new_marker.setLngLat(coords);
           new_marker.addTo(map);
           //let popup = new mapboxgl.Popup({ offset: 45 });
@@ -102,11 +142,6 @@
           });
 
           let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
-                    <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric"><h6>${capitalCity.name[i]}</h6></th>
-                        <td><span class="material-icons">thermostat</span></td>
-                    </thead>
                     <tbody id = "weatherTable-origin">
                     <tr>
                         <td class="mdl-data-table__cell--non-numeric">Temperature</td>
@@ -139,7 +174,6 @@
           // Add the popup to the map
           // popup.addTo(map1);
           });
-          
       </script>
     </main>
   </div>
