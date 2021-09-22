@@ -11,27 +11,21 @@ function signin(){
     //let retrievedData = JSON.parse(jsonData);
     retrievedData = User_List;
   
-    console.log(retrievedData)
+    
     if (document.getElementById('authorised').checked) {
         for (let i = 0; i < retrievedData._authorisedUser.length; i++) {
             if (retrievedData._authorisedUser[i]._username==username && retrievedData._authorisedUser[i]._password==password){
+                updateLocalStorage(retrievedData._users[i], 'signin')
                 location.href = 'usermap.html';
             }
-            else{
-                location.href = 'signin.html';
-            }
-    
           }
     }
     else{
         for (let i = 0; i < retrievedData._users.length; i++) {
             if (retrievedData._users[i]._username==username && retrievedData._users[i]._password==password){
+                updateLocalStorage(retrievedData._users[i], 'signin')
                 location.href = 'usermap.html';
             }
-            else{
-                location.href = 'signin.html';
-            }
-    
           }
     }
     
