@@ -39,7 +39,7 @@ function getToken() {
     fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncoded}`)
         .then(response => response.json())
         .then(data => {
-            token = data.access_token;
+            token = data.access_token;  
             token = encodeURIComponent(token)
             console.log(token)
             getCurrent()
@@ -56,7 +56,7 @@ function getCurrent() {
         fetch(url + `/api/v1/current/${cityId}?token=${token}`)
         .then(response => response.json())
         .then(data => {
-            //console.log(data)
+            console.log(data)
             updateMap(data.current, i)
         })
     }
