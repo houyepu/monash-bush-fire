@@ -15,8 +15,8 @@
   <style type="text/css">
     #map {
         position: absolute;
-        width: 750px;
-        height: 750px
+        width: 650px;
+        height: 650px
     }
     
   </style>
@@ -54,7 +54,7 @@
     <header class="mdl-layout__header mdl-layout__header--transparent">
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title">User's Pinpoint page</span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
@@ -66,16 +66,16 @@
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Title</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="weather.html">Weather</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <!--<a class="mdl-navigation__link" href="weather.html">Weather</a>-->
+        <a class="mdl-navigation__link" href="map.html">Home</a>
+        <a class="mdl-navigation__link" href="signin.html">Login</a>
+        <a class="mdl-navigation__link" href="register.html">Register</a>
       </nav>
     </div>
     <main class="mdl-layout__content">
       <!--Weather-->
       <!--Map-->
-      <pre id=info> </pre>
+      <!--<pre id=info> </pre>-->
       <div class="mapdiv" id="map"></div>
       
       <script>
@@ -100,7 +100,7 @@
           var coordinate = [];
           var observation_data = [];
           //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
-      
+          
       
       
           function getCurrent() {
@@ -138,7 +138,7 @@
           style: 'mapbox://styles/mapbox/satellite-streets-v11'
           });
           map.on('click', (e) => {
-          document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
+          //document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
           let coords = e.lngLat;
           coordinate.push(coords)
           console.log(coordinate)
