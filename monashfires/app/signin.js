@@ -15,7 +15,7 @@ function signin(){
     if (document.getElementById('authorised').checked) {
         for (let i = 0; i < retrievedData._authorisedUser.length; i++) {
             if (retrievedData._authorisedUser[i]._username==username && retrievedData._authorisedUser[i]._password==password){
-                updateLocalStorage(retrievedData._users[i], 'signin')
+                updateLocalStorage(retrievedData._authorisedUser[i], 'signin')
                 location.href = 'usermap.html';
             }
           }
