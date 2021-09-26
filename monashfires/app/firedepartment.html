@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- style sheet -->
+        <link rel="stylesheet" href="usermap.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Map access-->
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+
+        <!-- text style -->
+        <style type="text/css">
+            #map {
+                position: absolute;
+                width: 650px;
+                height: 650px
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Uses a transparent header that draws on top of the layout's background -->
+        <style>
+        #info {
+            display: table;
+            position: relative;
+            margin: 0px auto;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
+            color: rgb(97, 224, 233);
+            background: #fff;
+        }
+        .demo-layout-transparent {
+            background-image: linear-gradient(to bottom right, red, yellow);
+        }
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+            /* This background is dark, so we set text to white. Use 87% black instead if
+            your background is light. */
+            color: white;
+        }
+        </style>
+    
+    <!-- navigation bar -->
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Fire Department</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="register.html"></a>
+            </nav>
+        </div>
+        </header>
+        <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <!--<a class="mdl-navigation__link" href="weather.html">Weather</a>-->
+            <a class="mdl-navigation__link" href="map.html">Home</a>
+            <a class="mdl-navigation__link" href="signin.html">Login</a>
+            <a class="mdl-navigation__link" href="register.html">Register</a>
+        </nav>
+    </div>
+
+    <!-- main content -->
+    <main class="mdl-layout__content">
+        <div class="mapdiv" id="map"></div>
+        <script src="js/dummy.js"></script>
+        <script src="js/map.js"></script>
+        <script src="libs/api_info.js"></script>
+    </main>
+
+    </body>
+
+    <!-- pin point info box -->
+    <form class="box" method= "POST">
+    <h1>Pinpoints<br></h1>
+    <div id="container"></div>
+    <script type="text/javascript" src = "js/marker.js">updateMap(data.observation,i)</script>
+    </form>
+</html>

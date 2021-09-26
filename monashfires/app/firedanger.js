@@ -1,4 +1,20 @@
+// double check this with teammates
+function cal_drought(form)
+{
 
+    var a=tonum(form.dkdiinmm.value);//Bryamm-Keech Drought Index
+    var b=tonum(form.dslr.value);//Time since last rain
+    var c=tonum(form.precipinmm.value);//amount of precipitation
+    var d=(0.191*(a+104)*Math.pow((b+1),1.5))/(3.52*Math.pow((b+1),1.5)+c-1);//drought factor
+
+    if (Math.floor(d)>= 10)
+        var r = 10;
+    
+    else
+    var r =Math.floor(d);
+{
+
+form.dfactor.value=r;//drought factor
 
 function cal_fdi(form)
 {
