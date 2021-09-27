@@ -51,3 +51,63 @@ body{
 .box input[type = "button"]:hover{
     background:#2ecc71;
 }
+
+.black_box{
+    height: 380px;
+    width: 500px;
+    padding: 50px;
+    border: solid #00000000;
+    border-radius:24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%,-50%);
+    background: #ffffff;
+    text-align: left;
+    color:rgb(0, 0, 0);
+}
+.art_box{
+    height: 400px;
+    width: 300px;
+    padding: 50px;
+    /* border: solid #00000000; */
+    border-radius:24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-120%,-50%);
+    background-image: url("img/fireart.jpg");
+    filter: saturate(75%);
+    text-align: left;
+    transition: transform .2s;
+    color:rgb(255, 255, 255);
+}
+
+.art_box:hover {
+    transform: scale(1.1) translate(-115%,-45%); 
+  }
+
+.h3_box {
+    font-weight: 500;
+    font-weight:bold;
+}
+.h1_box {
+    font-size: 100px;
+    font-weight: 500;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+}
+
+#button1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-120%,250%);
+    
+    }
+#button2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(10%,250%);
+    }
