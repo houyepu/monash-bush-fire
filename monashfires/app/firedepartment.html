@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<!-- redo the whole page -->
     <head>
         <!-- style sheet -->
         <link rel="stylesheet" href="usermap.css">
@@ -49,6 +49,54 @@
             your background is light. */
             color: white;
         }
+        .lowmarker {
+        background-image: url('img/lowmarker.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 30%;
+        cursor: pointer;
+        }
+        .highmarker {
+        background-image: url('img/highmarker.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 30%;
+        cursor: pointer;
+        }
+        .veryhigh {
+        background-image: url('img/veryhigh.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 30%;
+        cursor: pointer;
+        }
+        .severe {
+        background-image: url('img/severe.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 30%;
+        cursor: pointer;
+        }
+        .extreme {
+        background-image: url('img/extreme.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 30%;
+        cursor: pointer;
+        }
+        .catastrophic {
+        background-image: url('img/catastrophic.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 30%;
+        cursor: pointer;
+        }
         </style>
     
     <!-- navigation bar -->
@@ -79,8 +127,28 @@
     <main class="mdl-layout__content">
         <div class="mapdiv" id="map"></div>
         <script src="js/dummy.js"></script>
-        <script src="js/map.js"></script>
-        <script src="libs/api_info.js"></script>
+        <script>           
+        mapboxgl.accessToken = "pk.eyJ1IjoidGRveTAwMDEiLCJhIjoiY2t0NnhvNzI4MG40dDJ1bzB4dHoyemhqMSJ9.5JRWGF3yYfWhd3SEqa1Xfg";
+        let map1 = new mapboxgl.Map({
+            container: 'map',
+            center: [133, -28.5], // starting position [lng, lat]
+            zoom: 3.4,
+            style: 'mapbox://styles/mapbox/satellite-streets-v11'
+        });
+        
+        const el = document.createElement('div');
+        el.className = 'catastrophic';
+        // make a marker for each feature and add to the map
+        //new mapboxgl.Marker(el).setLngLat(133, -28.5).addTo(map);
+        let marker1 = new mapboxgl.Marker(el); 
+
+        //Set location of markers
+        marker1.setLngLat([133, -28.5]);
+
+        //Add markers to the map
+        marker1.addTo(map1);
+
+        </script>
     </main>
 
     </body>
@@ -89,6 +157,6 @@
     <form class="box" method= "POST">
     <h1>Pinpoints<br></h1>
     <div id="container"></div>
-    <script type="text/javascript" src = "js/marker.js">updateMap(data.observation,i)</script>
+    
     </form>
 </html>
