@@ -1,13 +1,11 @@
 var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 
-function myFunction() {
-  var txt;
+function alertFunc() {
   if (confirm("Press a button!")) {
-    txt = "You pressed OK!";
+    /*do sth if pressed*/
   } else {
-    txt = "You pressed Cancel!";
+    /*dont do anything */
   }
-  document.getElementById("demo").innerHTML = txt;
 }
  var html = '<table>';
  html += '<tr>'+'<th>' + "Station " + '</th>';
@@ -23,11 +21,11 @@ function myFunction() {
   '<td>' + observation_data[i].relHumidity + '</td>' +
   '<td>' + observation_data[i].windSpeed + '</td>' +
   '<td>' + observation_data[i].windGust + '</td>' +
-  '<td>' + "<button class=" +"savebtn"+[i] +">save</button>"+ '</td>' +
-  '<td>' + "<button onclick=" +"'myFunction()' " + "class=" +"alertbtn"+[i] +">alert</button>"+ '</td>' +
-  '<td>' + "<button class=" +"delbtn"+[i] +">delete</button>"+ '</td>';
+  '<td>' + "<button class=btn type= save"+[i] +">save</button>"+ '</td>' +
+  '<td>' + "<button onclick=alertFunc(); class=btn"+" type=alert"+[i] +">alert</button>"+ '</td>' +
+  '<td>' + "<button class=btn type=delete"+[i] +">delete</button>"+ '</td>';
   html += '</tr>';
-   }
+  }
  }
  
 /*
