@@ -101,7 +101,14 @@
           var observation_data = [];
           //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
           
-      
+          function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+           color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+            }
       
           function getCurrent() {
         //coordinates.id.length
@@ -152,7 +159,7 @@
 
           getCurrent()
           for (let i = 0; i < retrieved_coords.length; i++) {
-
+          
           let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
           console.log(retrieved_coords[i])
           new_marker.setLngLat(retrieved_coords[i]);

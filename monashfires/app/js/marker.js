@@ -1,5 +1,14 @@
 var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 
+function myFunction() {
+  var txt;
+  if (confirm("Press a button!")) {
+    txt = "You pressed OK!";
+  } else {
+    txt = "You pressed Cancel!";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
  var html = '<table>';
  html += '<tr>'+'<th>' + "Station " + '</th>';
  html += '<th>' + "Temperature " + '</th>';
@@ -13,10 +22,14 @@ var observation_data = JSON.parse(window.localStorage.getItem('observation_data'
   '<td>' + observation_data[i].temperature + '</td>' +
   '<td>' + observation_data[i].relHumidity + '</td>' +
   '<td>' + observation_data[i].windSpeed + '</td>' +
-  '<td>' + observation_data[i].windGust + '</td>';
+  '<td>' + observation_data[i].windGust + '</td>' +
+  '<td>' + "<button class=" +"savebtn"+[i] +">save</button>"+ '</td>' +
+  '<td>' + "<button onclick=" +"'myFunction()' " + "class=" +"alertbtn"+[i] +">alert</button>"+ '</td>' +
+  '<td>' + "<button class=" +"delbtn"+[i] +">delete</button>"+ '</td>';
   html += '</tr>';
    }
  }
+ 
 /*
  for( var i = 0; i < observation_data.length; i++) {
   html += '<tr>';
