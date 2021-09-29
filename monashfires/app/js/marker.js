@@ -21,10 +21,10 @@ function alertFunc() {
   '<td>' + observation_data[i].relHumidity + '</td>' +
   '<td>' + observation_data[i].windSpeed + '</td>' +
   '<td>' + observation_data[i].windGust + '</td>' +
-  '<td>' + "<button class=btn type= save"+[i] +">save</button>"+ '</td>' +
-  '<td>' + "<button onclick='alertFunc()' class=btn"+" type=alert"+[i] +">alert</button>"+ '</td>' +
-  '<td>' + "<button onclick='alertFunc()' class=btn"+" type=info"+[i] +">info</button>"+ '</td>' +
-  '<td>' + "<button class=btn type=delete"+[i] +">delete</button>"+ '</td>';
+  '<td bgcolor=white>' + "<button class=btn type= save"+[i] +">save</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button onclick=alertFunc() class=btn"+" type=alert"+[i] +">alert</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button class=btn"+" type=info"+[i] +">info</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button class=btn type=delete"+[i] +">delete</button>"+ '</td>';
   html += '</tr>';
   }
  }
