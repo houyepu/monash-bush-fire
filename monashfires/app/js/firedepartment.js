@@ -6,9 +6,12 @@ let map1 = new mapboxgl.Map({
     zoom: 3.4,
     style: 'mapbox://styles/mapbox/satellite-streets-v11'
 });
-
+// fire_index
 let fire_index = 5;
 let coordinates = [[133,-28.5],[145,-26],[155,-30]];
+// how to construct
+// when the user press the report button on the page (usermap.html) this will pass the information of that coordinate including a calculated firedanger index in to the local storage with a key.
+// then we can use a for loop similar to the signin.js to loop over each coordinate's fire danger index and plot it accordingly
 for(let i=0; i< coordinates.length; i++){
     const el = document.createElement('div');
     if (fire_index == 0)

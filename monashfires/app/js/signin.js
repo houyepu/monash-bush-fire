@@ -16,7 +16,7 @@ function signin(){
         for (let i = 0; i < retrievedData._authorisedUser.length; i++) {
             if (retrievedData._authorisedUser[i]._username==username && retrievedData._authorisedUser[i]._password==password){
                 updateLocalStorage(retrievedData._authorisedUser[i], 'signin')
-                location.href = 'usermap.html';
+                location.href = 'firedepartment.html';
             }
           }
     }
