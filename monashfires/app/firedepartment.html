@@ -4,6 +4,7 @@
     <head>
         <!-- style sheet -->
         <link rel="stylesheet" href="usermap.css">
+        <link rel="stylesheet" href="firedepartment.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -24,80 +25,7 @@
     </head>
 
     <body>
-        <!-- Uses a transparent header that draws on top of the layout's background -->
-        <style>
-        #info {
-            display: table;
-            position: relative;
-            margin: 0px auto;
-            word-wrap: break-word;
-            white-space: pre-wrap;
-            padding: 10px;
-            border: none;
-            border-radius: 3px;
-            font-size: 12px;
-            text-align: center;
-            color: rgb(97, 224, 233);
-            background: #fff;
-        }
-        .demo-layout-transparent {
-            background-image: linear-gradient(to bottom right, red, yellow);
-        }
-        .demo-layout-transparent .mdl-layout__header,
-        .demo-layout-transparent .mdl-layout__drawer-button {
-            /* This background is dark, so we set text to white. Use 87% black instead if
-            your background is light. */
-            color: white;
-        }
-        .lowmarker {
-        background-image: url('img/lowmarker.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        border-radius: 30%;
-        cursor: pointer;
-        }
-        .highmarker {
-        background-image: url('img/highmarker.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        border-radius: 30%;
-        cursor: pointer;
-        }
-        .veryhigh {
-        background-image: url('img/veryhigh.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        border-radius: 30%;
-        cursor: pointer;
-        }
-        .severe {
-        background-image: url('img/severe.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        border-radius: 30%;
-        cursor: pointer;
-        }
-        .extreme {
-        background-image: url('img/extreme.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        border-radius: 30%;
-        cursor: pointer;
-        }
-        .catastrophic {
-        background-image: url('img/catastrophic.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        border-radius: 30%;
-        cursor: pointer;
-        }
-        </style>
+        
     
     <!-- navigation bar -->
     <div class="demo-layout-transparent mdl-layout mdl-js-layout">
@@ -110,6 +38,14 @@
             <!-- Navigation -->
             <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="register.html"></a>
+            <!-- Pop up -->
+            <div class = "popup" id="popup-1">
+                <div class ="overlay"></div>
+                <div class ="content">
+                    <div class ="close-btn" onclick="togglePopup()" >&times;</div>
+                    <img src="img/platypus.png" >
+                </div>
+            <button onclick="togglePopup()">Show Popup</button>
             </nav>
         </div>
         </header>
@@ -123,32 +59,13 @@
         </nav>
     </div>
 
+    
+
     <!-- main content -->
     <main class="mdl-layout__content">
         <div class="mapdiv" id="map"></div>
         <script src="js/dummy.js"></script>
-        <script>           
-        mapboxgl.accessToken = "pk.eyJ1IjoidGRveTAwMDEiLCJhIjoiY2t0NnhvNzI4MG40dDJ1bzB4dHoyemhqMSJ9.5JRWGF3yYfWhd3SEqa1Xfg";
-        let map1 = new mapboxgl.Map({
-            container: 'map',
-            center: [133, -28.5], // starting position [lng, lat]
-            zoom: 3.4,
-            style: 'mapbox://styles/mapbox/satellite-streets-v11'
-        });
-        
-        const el = document.createElement('div');
-        el.className = 'catastrophic';
-        // make a marker for each feature and add to the map
-        //new mapboxgl.Marker(el).setLngLat(133, -28.5).addTo(map);
-        let marker1 = new mapboxgl.Marker(el); 
-
-        //Set location of markers
-        marker1.setLngLat([133, -28.5]);
-
-        //Add markers to the map
-        marker1.addTo(map1);
-
-        </script>
+        <script src="js/firedepartment.js"></script>
     </main>
 
     </body>
