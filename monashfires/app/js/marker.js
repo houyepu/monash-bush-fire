@@ -7,16 +7,21 @@ function alertFunc() {
     /*dont do anything */
   }
 }
- var html = '<table>';
- html += '<tr>'+'<th>' + "Station " + '</th>';
- html += '<th>' + "Temperature " + '</th>';
+
+ var html = '<font size="2" face="Courier New" > <table>';
+ html += '<tr>'+'<th>' + "Marker color" + '</th>';
+ html += '<th>' + "Station" + '</th>';
+ html += '<th>' + "Temperature" + '</th>';
  html += '<th>' + "Humidity" + '</th>';
- html += '<th>' + "Wind Speed   " + '</th>';
- html += '<th>' + " Wind Gust  " + '</th>'+'</tr>';
+ html += '<th>' + "Wind Speed" + '</th>';
+ html += '<th>' + " Wind Gust" + '</th>'+'</tr>';
 
  for(var i = 0; i<observation_data.length;i++){
    if (observation_data[i] != null){
-  html += '<tr bgcolor='+this_colours[i] +'>' + '<td>' + observation_data[i].station + '</td>' +
+  html += '<tr>' + 
+  '<td bgcolor='+this_colours[i] +'></td>' +
+  '<td>' + observation_data[i].station + '</td>' +
+  '<td>' + observation_data[i].temperature + '</td>' +
   '<td>' + observation_data[i].temperature + '</td>' +
   '<td>' + observation_data[i].relHumidity + '</td>' +
   '<td>' + observation_data[i].windSpeed + '</td>' +
@@ -36,8 +41,8 @@ function alertFunc() {
     html += '<td>' + observation_data[i][j] + '</td>';
   }
   html += '</tr>';
- }
- html += '</table>';*/
+ }*/
+ html += '</table></font>';
  document.getElementById('container').innerHTML = html;
  var retrieved_coords = JSON.parse(window.localStorage.getItem('coordinates'));
           for (let i = 0; i < retrieved_coords.length; i++) {
