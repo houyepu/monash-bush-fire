@@ -31,8 +31,9 @@ class PinPoint {
   set note (newNote) {
     this.note = newNote;
   }
-  // not sure if coordinares is typo
+
   saveCoordinates (_username, _watchList, _coordinates) {
+
 
   }
 
@@ -46,22 +47,24 @@ class PinPoint {
 }
 
 class User {
-  constructor (_username, _password,_email,_authorised) {
+  constructor (_username, _password, _email, _authorised) {
     this._username = _username;
     this._password = _password;
     this.IPaddress = 0;
     this.authorised = _authorised;
     this.authorisedKey = '';
     this.watchList = [];
-    this.email = _email
+    this.email = _email;
   }
 
   get username () {
-    return _username;
+
+    return this._username;
   }
 
   get password () {
-    return _password;
+
+    return this._password;
   }
 
   addNote (note) {
@@ -82,12 +85,12 @@ class User {
   alert () {
 
   }
-  
+
   fromData(data)
 	{
     //Turns object into class data
     //Values for all the individual pinpoints
-    
+
     let dataArray = data.watchList;
 
     for(let i = 0; i < dataArray.length; i++)
@@ -123,7 +126,7 @@ class UserList {
   get authorisedUser () {
     return this._authorisedUser;
   }
- 
+
   addUser (newUser) {
     this._users.push(newUser);
   }
@@ -132,7 +135,7 @@ class UserList {
     this._authorisedUser.push(newUser);
   }
 
- 
+
   fromData(data)
 	{
     //Turns object into class data
@@ -163,7 +166,7 @@ class UserList {
 
 }
 
-  
+
 //
 //test class
   //let newPinpoint = new PinPoint();
@@ -192,7 +195,7 @@ class UserList {
   //console.log(testUserListAfterJSON)
 
   function updateLocalStorage(data, KEY)
-{   
+{
     localStorage.setItem(KEY, JSON.stringify(data));
 }
 
