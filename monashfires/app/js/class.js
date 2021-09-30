@@ -1,5 +1,6 @@
 USERS_LIST_KEY = 'aboevinoin'
-
+KEY_PIN_POINTS = 'observation_data'
+SIGNIN_KEY ='signin'
 class PinPoint {
   constructor () {
     this.coordinates = [];
@@ -67,8 +68,8 @@ class User {
 
   }
 
-  addPinpoints () {
-
+  addPinpoints (pin_point_data) {
+    this._watchList.push(pin_point_data);
   }
 
   removePinpoints () {
