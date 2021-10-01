@@ -18,6 +18,27 @@
         width: 650px;
         height: 650px
     }
+    .btn {
+            text-decoration: none;
+            border: none;
+            padding: 1px 1px;
+            font-size: 12px;
+            background-color: rgb(9, 180, 247);
+            color: rgb(3, 24, 2);
+            border-radius: 1px;
+            /*box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);*/
+            cursor: pointer;
+            outline: none;
+            transition: 0.2s all;
+        }
+        /* Adding transformation when the button is active */
+          
+        .btn:active {
+            transform: scale(0.90) !important;
+            /* Scaling button to 0.98 to its original size */
+            box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
+            /* Lowering the shadow */
+        }
     
   </style>
 </head>
@@ -97,11 +118,26 @@
               console.log(token)
               getCurrent()
           })
+          
           var coordinate = [];
+          var colour = [];
           var observation_data = [];
           //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
           
-      
+          function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+           color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+          }
+          //trying to get brighter colours only
+          function getColor(){ 
+            return "hsl(" + 360 * Math.random() + ',' +
+             (25 + 70 * Math.random()) + '%,' + 
+             (85 + 10 * Math.random()) + '%)'
+          }
       
           function getCurrent() {
         //coordinates.id.length
@@ -137,6 +173,7 @@
           zoom: 3.4,
           style: 'mapbox://styles/mapbox/satellite-streets-v11'
           });
+          colour = [];
           map.on('click', (e) => {
           //document.getElementById('info').innerHTML = JSON.stringify(e.point) +'<br />' + JSON.stringify(e.lngLat.wrap());
           let coords = e.lngLat;
@@ -144,16 +181,18 @@
           console.log(coordinate)
           
           localStorage.setItem('coordinates', JSON.stringify(coordinate));
-
+          
           // Retrieve the object from storage
           var retrieved_coords = JSON.parse(localStorage.getItem('coordinates'));
 
           console.log('retrieved coordinates: ', retrieved_coords);
-
+          this_colour = getRandomColor();
+          colour.push(this_colour);
+          localStorage.setItem('colour', JSON.stringify(colour));
+          var this_colours = JSON.parse(localStorage.getItem('colour'));
           getCurrent()
           for (let i = 0; i < retrieved_coords.length; i++) {
-
-          let new_marker = new mapboxgl.Marker({ "color": '#FF6400' });
+          let new_marker = new mapboxgl.Marker({ "color": this_colours[i] });
           console.log(retrieved_coords[i])
           new_marker.setLngLat(retrieved_coords[i]);
           new_marker.addTo(map);
