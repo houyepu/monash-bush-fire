@@ -22,13 +22,12 @@ function alertFunc() {
   '<td bgcolor='+this_colours[i] +'></td>' +
   '<td>' + observation_data[i].station + '</td>' +
   '<td>' + observation_data[i].temperature + '</td>' +
-  '<td>' + observation_data[i].temperature + '</td>' +
   '<td>' + observation_data[i].relHumidity + '</td>' +
   '<td>' + observation_data[i].windSpeed + '</td>' +
   '<td>' + observation_data[i].windGust + '</td>' +
   '<td bgcolor=white>' + "<button class=btn type= save"+[i] +">save</button>"+ '</td>' +
   '<td bgcolor=white>' + "<button onclick=alertFunc() class=btn"+" type=alert"+[i] +">alert</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button class=btn"+" type=info"+[i] +">info</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button class=btn  type=info"+[i] +">info</button>"+ '</td>' +
   '<td bgcolor=white>' + "<button class=btn type=delete"+[i] +">delete</button>"+ '</td>';
   html += '</tr>';
   }
