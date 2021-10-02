@@ -4,7 +4,7 @@ function cal_drought(form)
 
     var a=tonum(form.dkdiinmm.value);//Bryamm-Keech Drought Index
     var b=tonum(form.dslr.value);//Time since last rain
-    var c=tonum(form.precipinmm.value);//amount of precipitation
+    var c=tonum(form.precipinmm.value);//amount of precipitation we do have precipitation rate mm/hr
     var d=(0.191*(a+104)*Math.pow((b+1),1.5))/(3.52*Math.pow((b+1),1.5)+c-1);//drought factor
 
     if (Math.floor(d)>= 10)
@@ -61,7 +61,3 @@ else if  (k>50)
  
 }
 
-
-
-
-}

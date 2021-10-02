@@ -1,14 +1,12 @@
-KEY_PIN_POINTS = 'observation_data'
+COORDINATES_POINTS = 'coordinates'
 SIGNIN_KEY ='signin'
 KEY='aboevinoin'
 function save(){
-    let pin_point_data = getDataLocalStorage(KEY_PIN_POINTS);
+    let coordinates_data = getDataLocalStorage(COORDINATES_POINTS);
     let signinuser = getDataLocalStorage(SIGNIN_KEY);
     let user = getDataLocalStorage('aboevinoin');
-    user._users[signinuser].watchList.push(pin_point_data);
+    user._users[signinuser].watchList.push(coordinates_data);
     updateLocalStorage(user, KEY)
-    
-    
 }
 
 function delete_pinpoints(){

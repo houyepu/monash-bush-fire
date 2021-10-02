@@ -3,7 +3,7 @@ KEY_PIN_POINTS = 'observation_data'
 SIGNIN_KEY ='signin'
 class PinPoint {
   constructor () {
-    this.coordinates = [];
+    this.coordinates = {};
     this.name = '';
     this.note = '';
   }
@@ -20,7 +20,7 @@ class PinPoint {
     return this.note;
   }
 
-  set coordinates (newCoords) {
+  set setcoordinates (newCoords) {
     this.coordinates = newCoords;
   }
 
@@ -72,7 +72,7 @@ class User {
   }
 
   addPinpoints (pin_point_data) {
-    this._watchList.push(pin_point_data);
+    this.watchList.push(pin_point_data);
   }
 
   removePinpoints () {
@@ -91,7 +91,7 @@ class User {
     //Turns object into class data
     //Values for all the individual pinpoints
 
-    let dataArray = data.watchList;
+    let dataArray = data.watchList[0];
 
     for(let i = 0; i < dataArray.length; i++)
     {
@@ -243,3 +243,4 @@ if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
 else {
     User_List = new UserList();
 }
+
