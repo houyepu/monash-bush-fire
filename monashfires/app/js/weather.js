@@ -95,7 +95,7 @@ var uvOutput = document.getElementById("uvOutput");
 uvOutput.innerHTML = currentPinPoint.uvIndex;
 
 var visibilityOutput = document.getElementById("visibilityOutput");
-visibilityOutput.innerHTML = `${Math.round(currentPinPoint.visibility/1000*100)/100}m`;
+visibilityOutput.innerHTML = `${Math.round(currentPinPoint.visibility/1000*100)/100} km`;
 
 //Calculate fire danger rating
 function fireDanger() {
