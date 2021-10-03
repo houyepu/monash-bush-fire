@@ -6,6 +6,7 @@ class PinPoint {
     this.coordinates = {};
     this.name = '';
     this.note = '';
+    // this.locationInfo = {};
   }
 
   get coordinates () {
@@ -91,7 +92,7 @@ class User {
     //Turns object into class data
     //Values for all the individual pinpoints
 
-    let dataArray = data.watchList[0];
+    let dataArray = data.watchList;
 
     for(let i = 0; i < dataArray.length; i++)
     {
@@ -239,6 +240,7 @@ if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
 
     User_List.fromData(UserListData);
     console.log(User_List)
+    console.log(getDataLocalStorage(SIGNIN_KEY))
 }
 else {
     User_List = new UserList();
