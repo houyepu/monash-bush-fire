@@ -1,9 +1,11 @@
-USERS_LIST_KEY = 'aboevinoin'
-KEY_PIN_POINTS = 'observation_data'
-SIGNIN_KEY ='signin'
+USERS_LIST_KEY = 'aboevinoinin81s81';
+KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
+SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
+
 class PinPoint {
   constructor () {
     this.coordinates = {};
+    this.locationInfo = {};
     this.name = '';
     this.note = '';
     // this.locationInfo = {};
@@ -43,6 +45,7 @@ class PinPoint {
     this.coordinates = data.coordinates;
     this.name = data.name;
     this.note = data.note;
+    this.locationInfo = data.locationInfo;
   }
 
 }
@@ -117,24 +120,24 @@ class User {
 class UserList {
   constructor () {
     this._users = [];
-    this._authorisedUser = [];
+    // this._authorisedUser = [];
   }
 
   get users () {
     return this._users;
   }
 
-  get authorisedUser () {
-    return this._authorisedUser;
-  }
+  // get authorisedUser () {
+  //   return this._authorisedUser;
+  // }
 
   addUser (newUser) {
     this._users.push(newUser);
   }
 
-  addAuthorised (newUser){
-    this._authorisedUser.push(newUser);
-  }
+  // addAuthorised (newUser){
+  //   this._authorisedUser.push(newUser);
+  // }
 
 
   fromData(data)
@@ -151,16 +154,17 @@ class UserList {
 			// then adding this user into the _trip array
 			this._users.push(newUser);
     }
-    let dataArray2 = data._authorisedUser;
-    for(let i = 0; i < dataArray2.length; i++)
-    {
-      // create the user class instance
-      let newUser = new User();
-      // restoring the user at index i
-      newUser.fromData(dataArray2[i]);
-      // then adding this user into the _trip array
-      this._authorisedUser.push(newUser);
-        }
+    // let dataArray2 = data._authorisedUser;
+    // for(let i = 0; i < dataArray2.length; i++)
+    // {
+    //   // create the user class instance
+    //   let newUser = new User();
+    //   // restoring the user at index i
+    //   newUser.fromData(dataArray2[i]);
+    //   // then adding this user into the _trip array
+    //   this._authorisedUser.push(newUser);
+    //     }
+
         //Values for all the user-related data
         //None
 	}
@@ -168,33 +172,35 @@ class UserList {
 }
 
 
-//
-//test class
-  //let newPinpoint = new PinPoint();
-  //let newUser = new User('test_user', 'password');
-  //let testUserList = new UserList();
-  //testUserList.addUser(newUser);
+function testClass() {
+  //test class
+    let newPinpoint = new PinPoint();
+    let newUser = new User('test_user', 'password');
+    let testUserList = new UserList();
+    testUserList.addUser(newUser);
 
-  //console.log(testUserList)
+    console.log(testUserList)
 
 
-  //KEY = 'aboevinoin'
-  //Set item to local storage
-  //let jsonData = JSON.stringify(testUserList);
-  //localStorage.setItem(KEY,jsonData);
+    KEY = 'aboevinoin'
+    // Set item to local storage
+    let jsonData = JSON.stringify(testUserList);
+    localStorage.setItem(KEY,jsonData);
 
-  //Retrieve data using key
-  //jsonData = localStorage.getItem(KEY);
-  //let retrievedData = JSON.parse(jsonData);
+    // Retrieve data using key
+    jsonData = localStorage.getItem(KEY);
+    let retrievedData = JSON.parse(jsonData);
 
-  //console.log(retrievedData)
+    console.log(retrievedData)
 
-  //let testUserListAfterJSON = new UserList();
-  //update the global user
-  //testUserListAfterJSON.fromData(retrievedData);
+    let testUserListAfterJSON = new UserList();
+    // update the global user
+    testUserListAfterJSON.fromData(retrievedData);
 
-  //console.log(testUserListAfterJSON)
+    console.log(testUserListAfterJSON)
+}
 
+// Update local storage class
   function updateLocalStorage(data, KEY)
 {
     localStorage.setItem(KEY, JSON.stringify(data));
@@ -231,7 +237,10 @@ function getDataLocalStorage(KEY)
     return userData;
 }
 
-//On page load
+
+
+/* On page load */
+
 // Check if user list exists
 if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
     User_List = new UserList();
@@ -239,10 +248,28 @@ if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
     UserListData = getDataLocalStorage(USERS_LIST_KEY);
 
     User_List.fromData(UserListData);
-    console.log(User_List)
-    console.log(getDataLocalStorage(SIGNIN_KEY))
+    
+    // console.log(getDataLocalStorage(SIGNIN_KEY))
 }
 else {
     User_List = new UserList();
 }
 
+console.log('User List: (User_List)');
+    console.log(User_List);
+
+// Check if user logged in, and if so make current user available to access
+if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
+  
+  userIndex = getDataLocalStorage(SIGNED_IN_USER_KEY);
+  currentUser = User_List._users[userIndex];
+  
+  console.log('Current logged in user: (currentUser)');
+  console.log(currentUser);
+
+  console.log('Current user index: (userIndex)');
+  console.log(userIndex);
+}
+else {
+  console.log('No user logged in currently');
+}

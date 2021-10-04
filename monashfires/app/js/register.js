@@ -1,7 +1,11 @@
 //User_List=new UserList();
 
-KEY = 'register';
-USERS_LIST_KEY = 'aboevinoin'
+// KEY = 'register';
+// USERS_LIST_KEY = 'aboevinoin'
+
+USERS_LIST_KEY = 'aboevinoinin81s81';
+KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
+SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 function register(){
     let Authorised_code=123
@@ -24,24 +28,40 @@ function register(){
 }
 
 function user(username,email,password){
-    let newUser = new User(username, password,email);
+    let newUser = new User(username, password,email,false);
     //bugs 1 how to add another user without initialise a new userlist class??
     //let User_List=new UserList();
     User_List.addUser(newUser);
     //User_List.addUser(newUser)
-    let data = User_List;
-    updateLocalStorage(data, USERS_LIST_KEY);
-    location.href = 'signin.html';
+    
+    // Find index that the logged in user is in User_List:
+    let userIndex = User_List._users.findIndex(currentUser => currentUser == newUser)
+
+    updateLocalStorage(User_List, USERS_LIST_KEY);
+    updateLocalStorage(userIndex, SIGNED_IN_USER_KEY)
+
+    location.href = 'usermap.html';
 }
 
 function authorised_user(username, password,email){
     let newUser = new User(username, password,email,true);
     //bugs 1 how to add another user without initialise a new userlist class??
     //var User_List= new UserList();
-    User_List.addAuthorised(newUser);
+    
+    /*User_List.addAuthorised(newUser);
     let data = User_List;
     updateLocalStorage(data, USERS_LIST_KEY);
-    location.href = 'signin.html';
+    location.href = 'signin.html';*/
+
+    User_List.addUser(newUser);
+
+    // Find index that the logged in user is in User_List:
+    let userIndex = User_List._users.findIndex(currentUser => currentUser == newUser)
+
+    updateLocalStorage(User_List, USERS_LIST_KEY);
+    updateLocalStorage(userIndex, SIGNED_IN_USER_KEY)
+
+    location.href = 'usermap.html';
 }
 
 function check(Confirm_password,password,Authorised,Authorised_code){
@@ -54,52 +74,3 @@ function check(Confirm_password,password,Authorised,Authorised_code){
         return false;
     }
 }
-
-// function updateLocalStorage(data, KEY)
-// {   
-//     localStorage.setItem(KEY, JSON.stringify(data));
-// }
-
-// //Fuction to check if Data Exists in Local Storage
-// function checkIfDataExistsLocalStorage(KEY)
-// {
-//     //Access stored data
-//     let dataStored = localStorage.getItem(KEY);
-
-//     //Check if data is valid
-//     //ie if not undefined, null, NaN AND not blank string
-//     if (dataStored !== undefined && dataStored !== null && dataStored !== NaN && dataStored !== "")
-//     {
-//         //Valid data
-//         return true;
-//     }
-//     else
-//     {
-//         //Invalid data
-//         return false;
-//     }
-// }
-
-// // Function to get the data in local storage
-// function getDataLocalStorage(KEY)
-// {
-//     //Retrieve data using key
-//     let jsonData = localStorage.getItem(KEY);
-//     //Parsing it back into object
-//     let userData = JSON.parse(jsonData);
-//     //return data
-//     return userData;
-// }
-
-// //On page load
-// // Check if user list exists
-// if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
-//     User_List = new UserList();
-
-//     UserListData = getDataLocalStorage(USERS_LIST_KEY);
-
-//     User_List.fromData(UserListData);
-// }
-// else {
-//     User_List = new UserList();
-// }

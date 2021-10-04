@@ -56,7 +56,7 @@ function getCurrent() {
         fetch(url + `/api/v1/current/${cityId}?token=${token}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             updateMap(data.current, i)
         })
     }

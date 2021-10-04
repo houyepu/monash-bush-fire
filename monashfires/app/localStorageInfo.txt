@@ -1,0 +1,25 @@
+This page explains how local storage works
+
+-- KEYS --
+These are the keys used across the web app to control local storage:
+
+USERS_LIST_KEY = 'aboevinoinin81s81';
+SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
+KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
+
+
+-- User List --
+The user list is accessessible by the global variable "User_List". 
+To update local storage with an updated user list use the key "USERS_LIST_KEY".
+
+-- Signed in user --
+The currently signed in is accessible by the global variable "currentUser" if they are logged in.
+
+-- Signed in user's index in User List --
+The currently signed in user's index in User_List is accessible by the global variable "currentUser"
+
+-- User pinpoints --
+Each user's pinpoints are accessible under the user's "watchList", stored in "currentUser.watchList".
+
+-- Alert pinpoints --
+Pinpoints that are triggered to alert authorised users are stored in the key "KEY_PIN_POINTS".
