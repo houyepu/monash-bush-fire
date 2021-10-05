@@ -293,7 +293,7 @@ if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
 
   var navigationLinksVal = 
   `<a class="mdl-navigation__link" href="map.html">Home</a>
-  <a class="mdl-navigation__link" onclick="logOut()" href="">Log out</a>
+  <a class="mdl-navigation__link" onclick="logOut()" href="map.html">Log out</a>
   <a class="mdl-navigation__link" href="usermap.html">Watch Locations</a>`
 
   if (currentUser.authorised == true) {
