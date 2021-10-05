@@ -298,7 +298,7 @@ if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
 
   if (currentUser.authorised == true) {
     // Authorised user, so add extra pages to navigation
-    navigationLinksVal += `<a class="mdl-navigation__link" href="firedepartment">Alerts</a>`
+    navigationLinksVal += `<a class="mdl-navigation__link" href="firedepartment.html">Alerts</a>`
   }
 }
 else {
@@ -313,5 +313,5 @@ else {
   <a class="mdl-navigation__link" href="signin.html">Log in</a>`
 }
 
-topRightDisplay.innerHTML = topRightDisplayVal;
 navigationLinks.innerHTML = navigationLinksVal;
+topRightDisplay.innerHTML = topRightDisplayVal;
