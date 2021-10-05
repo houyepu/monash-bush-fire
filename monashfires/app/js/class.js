@@ -237,6 +237,13 @@ function getDataLocalStorage(KEY)
     return userData;
 }
 
+// Function to log user out
+function logOut()
+{
+  localStorage.removeItem(SIGNED_IN_USER_KEY)
+  location.href = 'map.html';
+}
+
 
 
 /* On page load */
@@ -273,3 +280,38 @@ if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
 else {
   console.log('No user logged in currently');
 }
+
+/* Update navigation and visible buttons */
+let topRightDisplay = document.getElementById("topRightDisplay");
+let navigationLinks = document.getElementById("navigationLinks");
+
+if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
+  // User currently logged in
+  // Display "Logout"
+  var topRightDisplayVal = 
+  `<a class="mdl-navigation__link" onclick="logOut()" href="">Log out</a>`;
+
+  var navigationLinksVal = 
+  `<a class="mdl-navigation__link" href="map.html">Home</a>
+  <a class="mdl-navigation__link" onclick="logOut()" href="">Log out</a>
+  <a class="mdl-navigation__link" href="usermap.html">Watch Locations</a>`
+
+  if (currentUser.authorised == true) {
+    // Authorised user, so add extra pages to navigation
+    navigationLinksVal += `<a class="mdl-navigation__link" href="firedepartment">Alerts</a>`
+  }
+}
+else {
+  // User not logged in
+  var topRightDisplayVal = 
+  `<a class="mdl-navigation__link" href="register.html">Sign up</a>
+  <a class="mdl-navigation__link" href="signin.html">Sign in</a>`;
+
+  var navigationLinksVal = 
+  `<a class="mdl-navigation__link" href="map.html">Home</a>
+  <a class="mdl-navigation__link" href="register.html">Sign Up</a>
+  <a class="mdl-navigation__link" href="signin.html">Log in</a>`
+}
+
+topRightDisplay.innerHTML = topRightDisplayVal;
+navigationLinks.innerHTML = navigationLinksVal;

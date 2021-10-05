@@ -37,7 +37,7 @@ function signin(){
 
     for (let i = 0; i < retrievedData._users.length; i++) {
         if (retrievedData._users[i]._username==username && retrievedData._users[i]._password==password){
-            updateLocalStorage(i, SIGNED_IN_USER_KEY)
+            updateLocalStorage(SIGNED_IN_USER_KEY, i)
             location.href = 'usermap.html';
         }
       }
