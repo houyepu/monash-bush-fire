@@ -97,7 +97,7 @@ class User {
     //Turns object into class data
     //Values for all the individual pinpoints
 
-    let dataArray = data.watchList[0];
+    let dataArray = data.watchList;
     if (dataArray.length > 0) {
       for(let i = 0; i < dataArray.length; i++)
       {
