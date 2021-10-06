@@ -8,13 +8,13 @@ SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 var this_colours = JSON.parse(localStorage.getItem('colour'));
-function alertFunc() {
-  if (confirm("Press a button!")) {
-    /*do sth if pressed*/
-  } else {
-    /*dont do anything */
-  }
-}
+// function alertFunc() {
+//   if (confirm("Press a button!")) {
+//     /*do sth if pressed*/
+//   } else {
+//     /*dont do anything */
+//   }
+// }
 
 const _username = 'monash-university'
 const _password = 'CvdYP1GCPxyy'
@@ -142,10 +142,10 @@ let map = new mapboxgl.Map({
   html += '<tr>' + 
   '<td bgcolor='+this_colours[i] +'></td>' +
   '<td>' + observation_data[i].station + '</td>' +
-  '<td bgcolor=white>' + "<button class=btn type= button>save</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button onclick=alertFunc() class=btn"+" type=button>alert</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button class=btn  type=button>info</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button class=btn type=button>delete</button>"+ '</td>';
+  '<td bgcolor=white>' + "<button value=save"+[i]+" class=btn type= button>save</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button value=alert"+[i]+" onclick=alertFunc("+i+") class=btn"+" type=button>alert</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button value=info"+[i]+" class=btn  type=button>info</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button value=delete"+[i]+" class=btn type=button>delete</button>"+ '</td>';
   html += '</tr>';
   }
  }
