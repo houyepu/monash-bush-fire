@@ -4,6 +4,7 @@ KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 
+
 var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 var this_colours = JSON.parse(localStorage.getItem('colour'));
 function alertFunc() {
