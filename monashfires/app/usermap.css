@@ -37,3 +37,29 @@ body{
     transform: translate(-50%,-50%);
     border-radius: 10px;
 }
+.clicked{
+    background-color:red;
+}
+.btn {
+    text-decoration: none;
+    border: none;
+    padding: 1px 1px;
+    font-size: 12px;
+    background-color: rgb(9, 25, 247);
+    color: rgb(3, 24, 2);
+    border-radius: 1px;
+    /*box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);*/
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s all;
+    z-index: 2;
+}
+/* Adding transformation when the button is active */
+  
+.btn:hover {
+background-color: rgb(23, 235, 94);
+transform: scale(0.90);
+    /* Scaling button to 0.90 to its original size */
+box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
+    /* Lowering the shadow */
+}

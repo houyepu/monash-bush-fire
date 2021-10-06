@@ -149,7 +149,6 @@ let map = new mapboxgl.Map({
   html += '</tr>';
   }
  }
- 
 /*
  for( var i = 0; i < observation_data.length; i++) {
   html += '<tr>';
