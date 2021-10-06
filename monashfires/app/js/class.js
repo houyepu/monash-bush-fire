@@ -3,11 +3,12 @@ KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 class PinPoint {
-  constructor () {
-    this.coordinates = {};
-    this.locationInfo = {};
-    this.name = '';
-    this.note = '';
+  constructor (coordinates_lng,coordinates_lat) {
+    this.coordinates_lng = coordinates_lng;
+    this.coordinates_lat = coordinates_lat;
+    //this.locationInfo = {};
+    //this.name = '';
+    //this.note = '';
     // this.locationInfo = {};
   }
 
@@ -42,10 +43,11 @@ class PinPoint {
 
   fromData(data) {
     //Turns object into class data
-    this.coordinates = data.coordinates;
-    this.name = data.name;
-    this.note = data.note;
-    this.locationInfo = data.locationInfo;
+    this.coordinates_lng = data.lng;
+    this.coordinates_lat = data.lat;
+    //this.name = data.name;
+    //this.note = data.note;
+    //this.locationInfo = data.locationInfo;
   }
 
 }
@@ -95,25 +97,28 @@ class User {
     //Turns object into class data
     //Values for all the individual pinpoints
 
-    let dataArray = data.watchList;
+    let dataArray = data.watchList[0];
+    if (dataArray.length > 0) {
+      for(let i = 0; i < dataArray.length; i++)
+      {
+        // creates the PinPoint class instance
+        let pinPoint = new PinPoint();
 
-    for(let i = 0; i < dataArray.length; i++)
-    {
-      // creates the PinPoint class instance
-      let pinPoint = new PinPoint();
-
-      // restoring the pinPoint at index i
-      pinPoint.fromData(dataArray[i]);
-      // then adding this route into the watchList array
-      this.watchList.push(route);
+        // restoring the pinPoint at index i
+        pinPoint.fromData(dataArray[i]);
+        // then adding this route into the watchList array
+        this.watchList.push(pinPoint);
+      }
     }
-
-  //Values for all the trip-related data
-  this._username = data._username;
-  this._password = data._password;
-  this.IPaddress = data.IPaddress;
-  this.authorised = data.authorised;
-  this.authorisedKey = data.authorisedKey;
+    
+    //Values for all the trip-related data
+    this._username = data._username;
+    this._password = data._password;
+    this.IPaddress = data.IPaddress;
+    this.authorised = data.authorised;
+    this.authorisedKey = data.authorisedKey;
+    
+    
 }
 }
 

@@ -1,12 +1,15 @@
+// KEYS
+USERS_LIST_KEY = 'aboevinoinin81s81';
+KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
+SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 COORDINATES_POINTS = 'coordinates'
-SIGNIN_KEY ='signin'
-KEY='aboevinoin'
+
 function save(){
     let coordinates_data = getDataLocalStorage(COORDINATES_POINTS);
-    let signinuser = getDataLocalStorage(SIGNIN_KEY);
-    let user = getDataLocalStorage('aboevinoin');
+    let signinuser = getDataLocalStorage(SIGNED_IN_USER_KEY);
+    let user = getDataLocalStorage(USERS_LIST_KEY);
     user._users[signinuser].watchList.push(coordinates_data);
-    updateLocalStorage(user, KEY)
+    updateLocalStorage(user,USERS_LIST_KEY)
 }
 
 function delete_pinpoints(){
