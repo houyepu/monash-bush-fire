@@ -6,8 +6,9 @@ SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 
 
-var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
+//var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
 var this_colours = JSON.parse(localStorage.getItem('colour'));
+
 // function alertFunc() {
 //   if (confirm("Press a button!")) {
 //     /*do sth if pressed*/
@@ -36,7 +37,7 @@ fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncod
   
   var coordinate = [];
   var colour = [];
-  //var observation_data = [];
+  var observation_data = [];
   //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
   
   function getRandomColor() {
@@ -61,12 +62,13 @@ for (let i = 0; i < coordinate.length; i++) {
   if (i == 0){
     observation_data = [];
   }
-  user_coordinates = coordinate[i];
-  fetch(url + `/api/v1/observation/latest/${user_coordinates}?token=${token}`)
+  user_coordinates_lng = coordinate[i].lng;
+  user_coordinates_lat = coordinate[i].lat;
+  fetch(url + `/api/v1/location/${user_coordinates_lng},${user_coordinates_lat}?token=${token}`)
   .then(response => response.json())
   .then(data => {
   console.log(data)
-  observation_data.push(data.observations[0])
+  observation_data.push(data)
   // Put the object into storage
   localStorage.setItem('observation_data', JSON.stringify(observation_data));
 
