@@ -142,10 +142,10 @@ let map = new mapboxgl.Map({
   html += '<tr>' + 
   '<td bgcolor='+this_colours[i] +'></td>' +
   '<td>' + observation_data[i].station + '</td>' +
-  '<td bgcolor=white>' + "<button class=btn type= save"+[i] +">save</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button onclick=alertFunc() class=btn"+" type=alert"+[i] +">alert</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button class=btn  type=info"+[i] +">info</button>"+ '</td>' +
-  '<td bgcolor=white>' + "<button class=btn type=delete"+[i] +">delete</button>"+ '</td>';
+  '<td bgcolor=white>' + "<button class=btn type= button>save</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button onclick=alertFunc() class=btn"+" type=button>alert</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button class=btn  type=button>info</button>"+ '</td>' +
+  '<td bgcolor=white>' + "<button class=btn type=button>delete</button>"+ '</td>';
   html += '</tr>';
   }
  }
