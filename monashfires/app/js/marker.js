@@ -3,7 +3,6 @@ USERS_LIST_KEY = 'aboevinoinin81s81';
 KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
-<<<<<<< HEAD
 
 
 
@@ -17,10 +16,6 @@ var this_colours = JSON.parse(localStorage.getItem('colour'));
 //     /*dont do anything */
 //   }
 // }
-=======
-var observation_data = JSON.parse(window.localStorage.getItem('observation_data'));
-var this_colours = JSON.parse(localStorage.getItem('colour'));
->>>>>>> 8780d3cceb38e53115817c672e84871b6e4dc26c
 
 const _username = 'monash-university'
 const _password = 'CvdYP1GCPxyy'
@@ -42,11 +37,8 @@ fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncod
   
   var coordinate = [];
   var colour = [];
-<<<<<<< HEAD
   var observation_data = [];
   //var coordinate = ['137.7292133105741,-19.350339784093876','137.7292133105741,-18.350339784093876'];
-=======
->>>>>>> 8780d3cceb38e53115817c672e84871b6e4dc26c
   
   //color 
   function getRandomColor() {
