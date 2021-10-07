@@ -157,10 +157,10 @@ function updateTable () {
     html += '<tr>' + 
     '<td bgcolor='+pinPoints[i].colour +'></td>' +
     '<td>' + pinPoints[i].locationInfo.name + '</td>' +
-    '<td bgcolor=white>' + "<button value=save"+[i]+" class=btn type= button onclick=save("+i+")>save</button>"+ '</td>' +
-    '<td bgcolor=white>' + "<button value=alert"+[i]+" onclick=alertFunc("+i+") class=btn"+" type=button>alert</button>"+ '</td>' +
-    '<td bgcolor=white>' + "<button value=info"+[i]+" class=btn type=button>info</button>"+ '</td>' +
-    '<td bgcolor=white>' + "<button value=delete"+[i]+" class=btn type=button onclick=delete_pinpoints("+i+")>delete</button>"+ '</td>';
+    '<td bgcolor=white>' + "<button value=save"+[i]+" class=btn type= button onclick=savePinPoint("+i+")>Save</button>"+ '</td>' +
+    '<td bgcolor=white>' + "<button value=alert"+[i]+" class=btn type=button onclick=alertFunc("+i+") >Alert</button>"+ '</td>' +
+    '<td bgcolor=white>' + "<button value=info"+[i]+" class=btn type=button onclick=weatherInfo("+i+") >Info</button>"+ '</td>' +
+    '<td bgcolor=white>' + "<button value=delete"+[i]+" class=btn type=button onclick=deletePinPoint("+i+")>Delete</button>"+ '</td>';
     html += '</tr>';
     // } 
   }
@@ -170,12 +170,19 @@ function updateTable () {
   document.getElementById('container').innerHTML = html;
   }
 
-/*// var retrieved_coords = JSON.parse(window.localStorage.getItem('coordinates'));
-for (let i = 0; i < retrieved_coords.length; i++) {
-  let new_marker = new mapboxgl.Marker({ "color": this_colours[i] });
-  console.log(retrieved_coords[i])
-  new_marker.setLngLat(retrieved_coords[i]);
-  new_marker.addTo(map);
-  // Add the marker to the map
-  new_marker.addTo(map);          
-}*/
+function savePinPoint (pinPointIndex) {
+
+}
+
+function deletePinPoint (pinPointIndex) {
+
+}
+
+function alertFunc () {
+
+}
+
+function weatherInfo (pinPointIndex) {
+
+  location.href = 'weather.html';
+}
