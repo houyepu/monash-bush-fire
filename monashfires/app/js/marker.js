@@ -6,7 +6,6 @@ SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 //creating new var to store pinpoints
 var pinPoints = [];
-
 // Get pinPoints list from local storage (if applicable)
 if (currentUser.watchList != []) {
   pinPoints = currentUser.watchList
@@ -118,8 +117,14 @@ function deletePinPoint (pinPointIndex) {
 }
 
 function alertFunc () {
+  // checking whether the user exist
   if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
-    confirm("are you sure?")
+    // a small popup confirmation when user presses the alert button
+    if(confirm("Are you sure you want to alert the fire department?")){
+      // toggles a popup allowing users to notedown or describe the fire danger
+      notePopup()
+    }
+    
 
   }else{
     console.log("cannot alert, please login or sign up")
@@ -135,4 +140,9 @@ function weatherInfo (pinPointIndex) {
   PINPOINT_WEATHER_KEY = 'bv2navpndlkuqoodn100d8;';
   updateLocalStorage(pinPoints[pinPointIndex], PINPOINT_WEATHER_KEY);
   location.href = 'weather.html';
+}
+
+// function to popup note
+function notePopup(){
+  document.getElementById("popup-note").classList.toggle("active");
 }
