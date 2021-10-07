@@ -179,6 +179,15 @@ function deletePinPoint (pinPointIndex) {
 }
 
 function alertFunc () {
+  if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
+    confirm("are you sure?")
+
+  }else{
+    console.log("cannot alert, please login or sign up")
+    alert("cannot alert, please login or sign up")
+    location.href = "signin.html"
+
+  }
 
 }
 
