@@ -75,7 +75,7 @@ box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
     display:none;
 }
 
-.popup .content{
+.popup .note-content{
     position:absolute;
     top:50%;
     left:50%;
@@ -109,7 +109,7 @@ box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
     display:block;
 }
 
-.popup.active .content {
+.popup.active .note-content {
     transition:all 300ms ease-in-out;
     transform:translate(-50%,-50%) scale(1);
 }

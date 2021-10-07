@@ -83,11 +83,12 @@ map.on('click', (e) =>
 
   pinPoints.push(newPinpoint); //pushing newPinpoint into pinpoint class array
   updateTable(); //updating the table
+  console.log(pinPoints)
 });
 
 function updateTable () {
   //table info
-  var html = '<font size="2" face="Courier New" > <table>';
+  var html = '<font size="2" face="Courier New" > <table id="table">';
   html += '<tr>'+'<th>' + "Marker color" + '</th>';
   html += '<th>' + "Station" + '</th>' +'</tr>';
 
@@ -116,13 +117,16 @@ function deletePinPoint (pinPointIndex) {
 
 }
 
-function alertFunc () {
+function alertFunc(index) {
   // checking whether the user exist
   if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
     // a small popup confirmation when user presses the alert button
     if(confirm("Are you sure you want to alert the fire department?")){
-      // toggles a popup allowing users to notedown or describe the fire danger
+      // toggles a popup allowing users to notedown or describe the fire danger 
       notePopup()
+      // get index of alert 
+      let pinpoint = pinPoints[index];
+      document.getElementById("store-notes").innerHTML = JSON.stringify(pinpoint)
     }
     
 
