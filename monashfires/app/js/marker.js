@@ -7,6 +7,20 @@ SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 //creating new var to store pinpoints
 var pinPoints = [];
 
+// Get pinPoints list from local storage (if applicable)
+if (currentUser.watchList != []) {
+  pinPoints = currentUser.watchList
+  
+  for (let i=0; i < pinPoints.length; i++) {
+    let new_marker = new mapboxgl.Marker({ "color": pinPoints[i].colour }); //creating new markers with colour specified
+    new_marker.setLngLat([pinPoints[i].coordinates_lng, pinPoints[i].coordinates_lat]); //marker coordinates
+    new_marker.addTo(map); //add marker to map
+  }
+
+  updateTable(); //update the table
+  
+}
+
 //creating constants to fetch from API
 const _username = 'monash-university'
 const _password = 'CvdYP1GCPxyy'
@@ -117,6 +131,8 @@ function alertFunc () {
 }
 
 function weatherInfo (pinPointIndex) {
-
+  // Update local storage with pinPoint to display
+  PINPOINT_WEATHER_KEY = 'bv2navpndlkuqoodn100d8;';
+  updateLocalStorage(pinPoints[pinPointIndex], PINPOINT_WEATHER_KEY);
   location.href = 'weather.html';
 }
