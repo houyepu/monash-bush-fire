@@ -6,7 +6,8 @@ class PinPoint {
   constructor (coordinates_lng,coordinates_lat) {
     this.coordinates_lng = coordinates_lng;
     this.coordinates_lat = coordinates_lat;
-    //this.locationInfo = {};
+    this.locationInfo = {};
+    this.colour = '';
     //this.name = '';
     //this.note = '';
     // this.locationInfo = {};
@@ -24,7 +25,11 @@ class PinPoint {
     return this.note;
   }
 
-  set setcoordinates (newCoords) {
+  // get colour () {
+  //   return this.colour
+  // }
+
+  set coordinates (newCoords) {
     this.coordinates = newCoords;
   }
 
@@ -36,6 +41,10 @@ class PinPoint {
     this.note = newNote;
   }
 
+  // set colour (newColour) {
+  //   this.colour = newColour;
+  // }
+
   saveCoordinates (_username, _watchList, _coordinates) {
 
 
@@ -45,6 +54,8 @@ class PinPoint {
     //Turns object into class data
     this.coordinates_lng = data.lng;
     this.coordinates_lat = data.lat;
+    this.locationInfo = data.locationInfo;
+    this.colour = data.colour;
     //this.name = data.name;
     //this.note = data.note;
     //this.locationInfo = data.locationInfo;
