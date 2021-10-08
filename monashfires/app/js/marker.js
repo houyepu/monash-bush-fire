@@ -90,7 +90,7 @@ function updateTable () {
   //table info
   var html = '<font size="2" face="Courier New" > <table id="table">';
   html += '<tr>'+'<th>' + "Marker color" + '</th>';
-  html += '<th>' + "Station" + '</th>' +'</tr>';
+  html += '<th>'+"Suburb"+'</th>' + '</tr>';
 
   for(var i = 0; i < pinPoints.length; i++)
   {
