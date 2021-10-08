@@ -59,6 +59,7 @@ fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncod
     .then(data => {
     console.log(data)
     newPinpoint.locationInfo = data;
+    updateTable(); 
     })
   }
 //Creating a map at the left side of the page
@@ -82,7 +83,7 @@ map.on('click', (e) =>
   new_marker.addTo(map); //add marker to map
 
   pinPoints.push(newPinpoint); //pushing newPinpoint into pinpoint class array
-  updateTable(); //updating the table
+  //updateTable(); //updating the table
   console.log(pinPoints)
 });
 
@@ -96,8 +97,8 @@ function updateTable () {
   {
     html += '<tr>' + 
     '<td bgcolor='+pinPoints[i].colour +'></td>' +
-    '<td>' + pinPoints[i].locationInfo.name + '</td>' +
-    '<td bgcolor=white>' + "<button value=save"+[i]+" class=btn type= button onclick=savePinPoint("+i+")>Save</button>"+ '</td>' +
+    '<td>' + pinPoints[i].locationInfo.name + '</td>';
+    html += '<td bgcolor=white>' + "<button value=save"+[i]+" class=btn type= button onclick=savePinPoint("+i+")>Save</button>"+ '</td>' +
     '<td bgcolor=white>' + "<button value=alert"+[i]+" class=btn type=button onclick=alertFunc("+i+") >Alert</button>"+ '</td>' +
     '<td bgcolor=white>' + "<button value=info"+[i]+" class=btn type=button onclick=weatherInfo("+i+") >Info</button>"+ '</td>' +
     '<td bgcolor=white>' + "<button value=delete"+[i]+" class=btn type=button onclick=deletePinPoint("+i+")>Delete</button>"+ '</td>';
