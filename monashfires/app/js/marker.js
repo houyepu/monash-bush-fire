@@ -49,6 +49,41 @@ fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncod
     updateTable(); 
     })
   }
+  //trying to make it recreate map markers everytime delete is pressed
+  function recreating_map_n_markers(){
+    let map = new mapboxgl.Map({
+      container: 'map',
+      center: [133, -28.5], // starting position [lng, lat]
+      zoom: 3.4,
+      style: 'mapbox://styles/mapbox/satellite-streets-v11'
+      });
+      map.on('click', (e) => 
+      {
+      let coords = e.lngLat; //long and lat coordinates stored in coords
+      let newPinpoint = new PinPoint(coords.lng,coords.lat); //creating new class pinpoint
+      newPinpoint.colour = getRandomColor(); //getting new random colour
+      getCurrent(newPinpoint) //getting location information
+      let new_marker = new mapboxgl.Marker({ "color": newPinpoint.colour }); //creating new markers with colour specified
+      new_marker.setLngLat([newPinpoint.coordinates_lng, newPinpoint.coordinates_lat]); //marker coordinates
+      new_marker.addTo(map); //add marker to map
+
+      pinPoints.push(newPinpoint); //pushing newPinpoint into pinpoint class array
+      //updateTable(); //updating the table
+      });
+      if (currentUser.watchList != []) {
+        pinPoints = currentUser.watchList
+        
+        for (let i=0; i < pinPoints.length; i++) {
+          let new_marker = new mapboxgl.Marker({ "color": pinPoints[i].colour }); //creating new markers with colour specified
+          new_marker.setLngLat([pinPoints[i].coordinates_lng, pinPoints[i].coordinates_lat]); //marker coordinates
+          new_marker.addTo(map); //add marker to map
+        }
+      
+        updateTable(); //update the table
+        
+      }
+      }
+
 //Creating a map at the left side of the page
 mapboxgl.accessToken = "pk.eyJ1IjoidGRveTAwMDEiLCJhIjoiY2t0NnhvNzI4MG40dDJ1bzB4dHoyemhqMSJ9.5JRWGF3yYfWhd3SEqa1Xfg";
 let map = new mapboxgl.Map({
@@ -123,6 +158,8 @@ function deletePinPoint (i) {
   updateTable();
   // update local storage
   updateLocalStorage(user,USERS_LIST_KEY);
+  recreating_map_n_markers();
+  //new_marker.remove();
 }
 
 function alertFunc(index) {
