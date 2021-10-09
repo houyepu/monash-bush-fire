@@ -6,19 +6,6 @@ SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 
 //creating new var to store pinpoints
 var pinPoints = [];
-// Get pinPoints list from local storage (if applicable)
-if (currentUser.watchList != []) {
-  pinPoints = currentUser.watchList
-  
-  for (let i=0; i < pinPoints.length; i++) {
-    let new_marker = new mapboxgl.Marker({ "color": pinPoints[i].colour }); //creating new markers with colour specified
-    new_marker.setLngLat([pinPoints[i].coordinates_lng, pinPoints[i].coordinates_lat]); //marker coordinates
-    new_marker.addTo(map); //add marker to map
-  }
-
-  updateTable(); //update the table
-  
-}
 
 //creating constants to fetch from API
 const _username = 'monash-university'
@@ -110,12 +97,32 @@ function updateTable () {
   document.getElementById('container').innerHTML = html;
   }
 
-function savePinPoint (pinPointIndex) {
-
+function savePinPoint (i) {
+  // grabbing coordinates data
+  let coordinates_data =pinPoints[i];
+  // grabbing signed in user data
+  let signinuser = getDataLocalStorage(SIGNED_IN_USER_KEY);
+  // grabbing user list data
+  let user = getDataLocalStorage(USERS_LIST_KEY);
+  // assigned coordinates data into users
+  user._users[signinuser].watchList.push(coordinates_data);
+  // update data
+  updateLocalStorage(user,USERS_LIST_KEY);
 }
 
-function deletePinPoint (pinPointIndex) {
-
+function deletePinPoint (i) {
+  // delete array at the element 
+  pinPoints.splice(i,1);
+  // signin user 
+  let signinuser = getDataLocalStorage(SIGNED_IN_USER_KEY);
+  // user list 
+  let user = getDataLocalStorage(USERS_LIST_KEY);
+  // delete user 
+  user._users[signinuser].watchList.splice(i,1);
+  // update the markers 
+  updateTable();
+  // update local storage
+  updateLocalStorage(user,USERS_LIST_KEY);
 }
 
 function alertFunc(index) {
@@ -150,4 +157,18 @@ function weatherInfo (pinPointIndex) {
 // function to popup note
 function notePopup(){
   document.getElementById("popup-note").classList.toggle("active");
+}
+
+// Get pinPoints list from local storage (if applicable)
+if (currentUser.watchList != []) {
+  pinPoints = currentUser.watchList
+  
+  for (let i=0; i < pinPoints.length; i++) {
+    let new_marker = new mapboxgl.Marker({ "color": pinPoints[i].colour }); //creating new markers with colour specified
+    new_marker.setLngLat([pinPoints[i].coordinates_lng, pinPoints[i].coordinates_lat]); //marker coordinates
+    new_marker.addTo(map); //add marker to map
+  }
+
+  updateTable(); //update the table
+  
 }

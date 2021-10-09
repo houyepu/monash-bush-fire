@@ -52,8 +52,8 @@ class PinPoint {
 
   fromData(data) {
     //Turns object into class data
-    this.coordinates_lng = data.lng;
-    this.coordinates_lat = data.lat;
+    this.coordinates_lng = data.coordinates_lng;
+    this.coordinates_lat = data.coordinates_lat;
     this.locationInfo = data.locationInfo;
     this.colour = data.colour;
     //this.name = data.name;
