@@ -144,26 +144,26 @@ function savePinPoint (i) {
   // grabbing signed in user data
   let signinuser = getDataLocalStorage(SIGNED_IN_USER_KEY);
   // grabbing user list data
-  let user = getDataLocalStorage(USERS_LIST_KEY);
-  console.log("user account:")
-  console.log(user)
+  let usersData = getDataLocalStorage(USERS_LIST_KEY);
+  let users = new UserList();
+  users.fromData(usersData);
+  let cur_user = users._users[signinuser]
   //checking if its in the user account already
-  //true = save
-  //false = dont save
-  let already_in_map = true;
-  for(let k=0;user.length;k++){
-    if (user.lat==coordinates_data.lat[k]){
-      if(user.lng==coordinates_data.lng[k]){
-        already_in_map = false;
-      }
-    }
-}
-if (already_in_map){
-  // assigned coordinates data into users
-  user._users[signinuser].watchList.push(coordinates_data);
-  // update data
-  updateLocalStorage(user,USERS_LIST_KEY);
-}
+  let existingPinpointIndex = -1;
+  console.log(users)
+  if(cur_user.watchList==null){
+    existingPinpointIndex = 0;
+  }
+  else{
+    existingPinpointIndex = cur_user.watchList.findIndex(item => item == pinPoints[i]);
+  }
+  // Find index in user's watchlist where the current pinpoint to be added matches
+  if (existingPinpointIndex == -1){
+    // assigned coordinates data into users
+    users._users[signinuser].watchList.push(coordinates_data);
+    // update data
+    updateLocalStorage(users,USERS_LIST_KEY);
+  }
 }
 
 function deletePinPoint (i) {
