@@ -2,13 +2,10 @@
 USERS_LIST_KEY = 'aboevinoinin81s81';
 KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
-// made a new key to store alerted pinpoints so that I have the access of this in my firedepartment.js 
-ALERTED_PINPOINTS = 'Alerted_pinpoints'
 
 
 //creating new var to store pinpoints
 var pinPoints = [];
-var alerted_pinPoints = [];
 
 //creating constants to fetch from API
 const _username = 'monash-university'
@@ -143,45 +140,26 @@ function savePinPoint (i) {
   // grabbing signed in user data
   let signinuser = getDataLocalStorage(SIGNED_IN_USER_KEY);
   // grabbing user list data
-  let user = getDataLocalStorage(USERS_LIST_KEY);
-  console.log("user account:")
-  console.log(user)
-  console.log("current_user.watchlist:")
-  console.log(currentUser)
+  let usersData = getDataLocalStorage(USERS_LIST_KEY);
+  let users = new UserList();
+  users.fromData(usersData);
+  let cur_user = users._users[signinuser]
   //checking if its in the user account already
-  let existingPinpointIndex = 0;
-  if(currentUser.watchList==null){
-    existingPinpointIndex = -1;
+  let existingPinpointIndex = -1;
+  console.log(users)
+  if(cur_user.watchList==null){
+    existingPinpointIndex = 0;
   }
   else{
-    existingPinpointIndex = currentUser.watchList.findIndex(item => item == pinPoints[i]);
+    existingPinpointIndex = cur_user.watchList.findIndex(item => item == pinPoints[i]);
   }
   // Find index in user's watchlist where the current pinpoint to be added matches
   if (existingPinpointIndex == -1){
     // assigned coordinates data into users
-    user._users[signinuser].watchList.push(coordinates_data);
+    users._users[signinuser].watchList.push(coordinates_data);
     // update data
-    updateLocalStorage(user,USERS_LIST_KEY);
+    updateLocalStorage(users,USERS_LIST_KEY);
   }
-
-//   let already_in_map = true;
-//   let user_array_length = user[1].watchList.length
-//   if (user_array_length==null){
-//     user_array_length = 0;
-//   }
-//   for(let k=0;user_array_length;k++){
-//     if (user[1].watchList[k].coordinates_lat==coordinates_data.coordinates_lat){
-//       if(user[1].watchList[k].coordinates_lng==coordinates_data.coordinates_lng){
-//         already_in_map = false;
-//       }
-//     }
-// }
-// if (already_in_map){
-//   // assigned coordinates data into users
-//   user._users[signinuser].watchList.push(coordinates_data);
-//   // update data
-//   updateLocalStorage(user,USERS_LIST_KEY);
-// }
 }
 
 function deletePinPoint (i) {
@@ -211,12 +189,6 @@ function alertFunc(index) {
       // get index of alert 
       let pinpoint = pinPoints[index];
       document.getElementById("store-notes").innerHTML = JSON.stringify(pinpoint)
-
-      alerted_pinPoints.push(pinpoint)
-     
-     
-      // update the local storage
-      updateLocalStorage(alerted_pinPoints,ALERTED_PINPOINTS);
     }
     
 
@@ -228,7 +200,6 @@ function alertFunc(index) {
   }
 
 }
-
 
 function weatherInfo (pinPointIndex) {
   // Update local storage with pinPoint to display
