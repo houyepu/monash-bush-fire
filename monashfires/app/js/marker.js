@@ -2,10 +2,13 @@
 USERS_LIST_KEY = 'aboevinoinin81s81';
 KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
+// made a new key to store alerted pinpoints so that I have the access of this in my firedepartment.js 
+ALERTED_PINPOINTS = 'Alerted_pinpoints'
 
 
 //creating new var to store pinpoints
 var pinPoints = [];
+var alerted_pinPoints = [];
 
 //creating constants to fetch from API
 const _username = 'monash-university'
@@ -208,6 +211,12 @@ function alertFunc(index) {
       // get index of alert 
       let pinpoint = pinPoints[index];
       document.getElementById("store-notes").innerHTML = JSON.stringify(pinpoint)
+
+      alerted_pinPoints.push(pinpoint)
+     
+     
+      // update the local storage
+      updateLocalStorage(alerted_pinPoints,ALERTED_PINPOINTS);
     }
     
 
@@ -219,6 +228,7 @@ function alertFunc(index) {
   }
 
 }
+
 
 function weatherInfo (pinPointIndex) {
   // Update local storage with pinPoint to display
