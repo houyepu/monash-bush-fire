@@ -192,13 +192,29 @@ function alertFunc(index) {
       notePopup()
       // get index of alert 
       let pinpoint = pinPoints[index];
-      document.getElementById("store-notes").innerHTML = JSON.stringify(pinpoint)
+      let today = new Date();
+      console.log(today.toLocaleTimeString())
+      console.log(today.toLocaleDateString())
+      let current_user = getDataLocalStorage(SIGNED_IN_USER_KEY)
+      let user_list = getDataLocalStorage(USERS_LIST_KEY)
+      let user = new UserList()
+      user.fromData(user_list)
+      // testing Alert class
+      let alert = new Alert(user._users[current_user]._username,"14:00","12/12/2021")
+      alert.addNote("This is a note")
+      pinpoint.report = alert
+      locationHTML = `<p>Location: ${pinpoint.locationInfo.name}</p>`
+      noteHTML = `<h3 id = "note-title">Note</h3>
+      <textarea id= "note-body" placeholder="type here..."></textarea>`
+
+      document.getElementById("store-notes").innerHTML = locationHTML+ noteHTML
       if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
         var old_data=getDataLocalStorage(ALERTED_PINPOINTS);
         old_data.push(pinpoint);
         updateLocalStorage(old_data,ALERTED_PINPOINTS)
       }
     }
+
     
 
   }else{
@@ -228,7 +244,8 @@ if (currentUser.watchList != []) {
   pinPoints = currentUser.watchList
   
   for (let i=0; i < pinPoints.length; i++) {
-    let new_marker = new mapboxgl.Marker({ "color": pinPoints[i].colour }); //creating new markers with colour specified
+    let new_marker = new mapboxgl.Marker({ "color": pinPoints[i].colour }); 
+    //creating new markers with colour specified
     new_marker.setLngLat([pinPoints[i].coordinates_lng, pinPoints[i].coordinates_lat]); //marker coordinates
     new_marker.addTo(map); //add marker to map
   }

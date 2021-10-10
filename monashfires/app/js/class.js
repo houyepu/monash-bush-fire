@@ -8,6 +8,7 @@ class PinPoint {
     this.coordinates_lat = coordinates_lat;
     this.locationInfo = {};
     this.colour = '';
+    this.report = {}
     //this.name = '';
     //this.note = '';
     // this.locationInfo = {};
@@ -84,22 +85,11 @@ class User {
     return this._password;
   }
 
-  addNote (note) {
-
-  }
-
   addPinpoints (pin_point_data) {
     this.watchList.push(pin_point_data);
   }
 
   removePinpoints () {
-
-  }
-  removeNote (note) {
-
-  }
-
-  alert () {
 
   }
 
@@ -128,9 +118,40 @@ class User {
     this.IPaddress = data.IPaddress;
     this.authorised = data.authorised;
     this.authorisedKey = data.authorisedKey;
-    
-    
+  }
 }
+
+// created a new class Alert
+class Alert {
+
+  constructor(current_user,  reported_time, reported_date){
+    this.current_user = current_user;
+    this.reported_time = reported_time;
+    this.reported_date = reported_date;
+    this.note = "";
+
+  }
+
+  addNote (note) {
+
+    return this.note = note;
+
+  }
+
+  removeNote () {
+
+    return this.note = "";
+
+  }
+
+  fromData(data) {
+    this.current_user = data.currert_user;
+    this.reported_time = data.reported_time;
+    this.reported_date = data.reported_date;
+    this.note = data.note;
+  }
+
+
 }
 
 class UserList {
