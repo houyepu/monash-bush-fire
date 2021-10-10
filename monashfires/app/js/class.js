@@ -1,7 +1,7 @@
 USERS_LIST_KEY = 'aboevinoinin81s81';
 KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
-
+ALERTED_PINPOINTS = 'Alerted_pinpoints'
 class PinPoint {
   constructor (coordinates_lng,coordinates_lat) {
     this.coordinates_lng = coordinates_lng;
@@ -280,7 +280,9 @@ else {
 
 console.log('User List: (User_List)');
     console.log(User_List);
-
+if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS) == false){
+  updateLocalStorage([],ALERTED_PINPOINTS);
+}
 // Check if user logged in, and if so make current user available to access
 if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
   

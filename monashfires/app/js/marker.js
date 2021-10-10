@@ -52,6 +52,7 @@ fetch(url + `/authorize/token?user=${_usernameEncoded}&password=${_passwordEncod
     updateTable(); 
     })
   }
+
   //trying to make it recreate map markers everytime delete is pressed
   function recreating_map_n_markers(){
     let map = new mapboxgl.Map({
@@ -192,12 +193,11 @@ function alertFunc(index) {
       // get index of alert 
       let pinpoint = pinPoints[index];
       document.getElementById("store-notes").innerHTML = JSON.stringify(pinpoint)
-
-      alerted_pinPoints.push(pinpoint)
-     
-     
-      // update the local storage
-      updateLocalStorage(alerted_pinPoints,ALERTED_PINPOINTS);
+      if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
+        var old_data=getDataLocalStorage(ALERTED_PINPOINTS);
+        old_data.push(pinpoint);
+        updateLocalStorage(old_data,ALERTED_PINPOINTS)
+      }
     }
     
 
