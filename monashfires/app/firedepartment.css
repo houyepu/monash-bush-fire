@@ -127,3 +127,21 @@ cursor: pointer;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 }
+
+.fire-legend {
+    padding: 15px;
+    width: 850px;
+    max-width: 850px;
+    height: 700px;
+    position: absolute;
+    left: 900px;
+    top: 5rem;
+
+}
+#fire-index {
+    position: center;
+    border: solid;
+
+    
+    
+}
