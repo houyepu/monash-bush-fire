@@ -143,23 +143,42 @@ function savePinPoint (i) {
   let user = getDataLocalStorage(USERS_LIST_KEY);
   console.log("user account:")
   console.log(user)
+  console.log("current_user.watchlist:")
+  console.log(currentUser)
   //checking if its in the user account already
-  //true = save
-  //false = dont save
-  let already_in_map = true;
-  for(let k=0;user.length;k++){
-    if (user.lat==coordinates_data.lat[k]){
-      if(user.lng==coordinates_data.lng[k]){
-        already_in_map = false;
-      }
-    }
-}
-if (already_in_map){
-  // assigned coordinates data into users
-  user._users[signinuser].watchList.push(coordinates_data);
-  // update data
-  updateLocalStorage(user,USERS_LIST_KEY);
-}
+  let existingPinpointIndex = 0;
+  if(currentUser.watchList==null){
+    existingPinpointIndex = -1;
+  }
+  else{
+    existingPinpointIndex = currentUser.watchList.findIndex(item => item == pinPoints[i]);
+  }
+  // Find index in user's watchlist where the current pinpoint to be added matches
+  if (existingPinpointIndex == -1){
+    // assigned coordinates data into users
+    user._users[signinuser].watchList.push(coordinates_data);
+    // update data
+    updateLocalStorage(user,USERS_LIST_KEY);
+  }
+
+//   let already_in_map = true;
+//   let user_array_length = user[1].watchList.length
+//   if (user_array_length==null){
+//     user_array_length = 0;
+//   }
+//   for(let k=0;user_array_length;k++){
+//     if (user[1].watchList[k].coordinates_lat==coordinates_data.coordinates_lat){
+//       if(user[1].watchList[k].coordinates_lng==coordinates_data.coordinates_lng){
+//         already_in_map = false;
+//       }
+//     }
+// }
+// if (already_in_map){
+//   // assigned coordinates data into users
+//   user._users[signinuser].watchList.push(coordinates_data);
+//   // update data
+//   updateLocalStorage(user,USERS_LIST_KEY);
+// }
 }
 
 function deletePinPoint (i) {
