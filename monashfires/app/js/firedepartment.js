@@ -70,19 +70,19 @@ function plot_marker(){
         if (fire_index[i] == 0)
         print("Very safe")
     
-        else if  (fire_index[i] <5)
+        else if  (fire_index[i] <11)
         el.className = 'lowmarker';
     
-        else if  (fire_index[i] <12)
+        else if  (fire_index[i] <31)
         el.className = 'highmarker';
         
-        else if  (fire_index[i] <24)
+        else if  (fire_index[i] <49)
         el.className = 'severe';
         
-        else if  (fire_index[i] <50)
+        else if  (fire_index[i] <74)
         el.className = 'extreme';
         
-        else if  (fire_index[i] >50)
+        else if  (fire_index[i] >99)
         el.className = 'catastrophic';
         
         // make a marker for each feature and add to the map
