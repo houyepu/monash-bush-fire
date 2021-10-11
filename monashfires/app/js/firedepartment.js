@@ -13,7 +13,6 @@ let map1 = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/satellite-streets-v11'
 });
 
-
 // all coordinates are stored in here
 let coordinates_array = []
 // fire_index array
@@ -27,6 +26,7 @@ for (let i=0; i<pinPoint.length; i++){
 
 getToken()
 
+//grabbing the current pinpoint 
 function current_pinpoint(){
     for (let i=0; i<pinPoint.length; i++){
         currentPinPointInfo = pinPoint[i].locationInfo;
@@ -50,6 +50,7 @@ function getToken() {
     )
 }
 
+// Retriving the current weather data
 function retrieveWeatherData(coordinates_lng,coordinates_lat) {
     // Get weather conditions
     fetch(`https://pfa.foreca.com/api/v1/current/${coordinates_lng},${coordinates_lat}?token=${token}`)
@@ -96,7 +97,6 @@ function plot_marker(){
     }
 }
 
-
 // calculate fire danger 
 function fireDanger(currentPinPoint) {
     // b = temperature; c = rel humidity; d = wind speed; h = drought factor
@@ -107,9 +107,4 @@ function fireDanger(currentPinPoint) {
 
     var k=2*(Math.exp((.987*Math.log(h+0.001))-.45-(.0345*c)+(.0338*b)+(.0234*d)));//forest mk5
     return k
-}
-
-//Popup function
-function togglePopup(){
-    document.getElementById("popup-1").classList.toggle("active");
 }
