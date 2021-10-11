@@ -110,7 +110,7 @@ function plot_marker(){
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">Fire index</td>
-            <td>${fire_index[i].toFixed(2)} knots</td>
+            <td>${fire_index[i].toFixed(2)} </td>
         </tr>
         </tbody>
         </table>`
