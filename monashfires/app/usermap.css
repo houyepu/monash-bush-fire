@@ -55,8 +55,8 @@ body{
 /* Adding transformation when the button is active */
   
 .btn:hover {
-background-color: rgb(63, 245, 118);
-transform: scale(0.90);
+background-color: rgb(129, 247, 164);
+transform: scale(0.95);
     /* Scaling button to 0.90 to its original size */
 box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
     /* Lowering the shadow */
@@ -64,7 +64,27 @@ animation: ripple 600ms linear;
 }
 
 /* Note popup */
-
+.btn1 {
+    text-decoration: none;
+    border: 2px solid rgb(238, 57, 57);
+    padding: 5px 8px;
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(3, 24, 2);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s all;
+    z-index: 2;
+}
+.btn1:hover {
+    background-color: rgb(247, 96, 96);
+    transform: scale(0.98);
+        /* Scaling button to 0.90 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
+        /* Lowering the shadow */
+    animation: ripple 600ms linear;
+    }
 .popup .overlay{
     position:fixed;
     top:0px;
