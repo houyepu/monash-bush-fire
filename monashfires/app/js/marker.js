@@ -192,27 +192,44 @@ function alertFunc(index) {
       notePopup()
       // get index of alert 
       let pinpoint = pinPoints[index];
-      let today = new Date();
-      console.log(today.toLocaleTimeString())
-      console.log(today.toLocaleDateString())
-      let current_user = getDataLocalStorage(SIGNED_IN_USER_KEY)
+      let today = new Date(); // create new date for today
+      let reported_date = today.toLocaleDateString(); // date of report
+      let reported_time = today.toLocaleTimeString(); // time of report
+      let current_user_index = getDataLocalStorage(SIGNED_IN_USER_KEY)  // user index
       let user_list = getDataLocalStorage(USERS_LIST_KEY)
       let user = new UserList()
       user.fromData(user_list)
-      // testing Alert class
-      let alert = new Alert(user._users[current_user]._username,"14:00","12/12/2021")
-      alert.addNote("This is a note")
-      pinpoint.report = alert
-      locationHTML = `<p>Location: ${pinpoint.locationInfo.name}</p>`
-      noteHTML = `<h3 id = "note-title">Note</h3>
-      <textarea id= "note-body" placeholder="type here..."></textarea>`
-
-      document.getElementById("store-notes").innerHTML = locationHTML+ noteHTML
-      if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
-        var old_data=getDataLocalStorage(ALERTED_PINPOINTS);
-        old_data.push(pinpoint);
-        updateLocalStorage(old_data,ALERTED_PINPOINTS)
-      }
+      let current_user = user._users[current_user_index]; // name of the user
+      // html generating needed infor
+      noteHTML = `<h2 id = "report-title">Report Detail</h2>
+        <div class = "report-details">
+          <p id ="details">Location: ${pinpoint.locationInfo.name}, ${pinpoint.locationInfo.adminArea}</p>
+          <p id ="details">Time: ${reported_time} </p>
+          <p id ="details">Date: ${reported_date} </p>
+        </div>
+        <div class="note-area">
+          <h3 id = "note-title">Report Explanation</h3>
+          <textarea id= "note-body" placeholder="type here..."></textarea>
+        </div>
+      </div>
+      <button id="report-submit"">Submit</button>`
+      document.getElementById("store-notes").innerHTML = noteHTML // for html display
+      // when submit button is clicked
+      document.getElementById("report-submit").addEventListener("click", function() {
+        let note = document.getElementById("note-body").value; // the text note written
+        let alert = new Alert(current_user._username, reported_date, reported_time) // create a new alert
+        alert.addNote(note) // calling addNote method to store the text note
+        pinpoint.report = alert; // store the info alert to report
+        document.getElementById("store-notes").style.display = "none";
+        document.getElementById("submitted").style.display = "block";
+        
+        if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
+          var old_data=getDataLocalStorage(ALERTED_PINPOINTS);
+          old_data.push(pinpoint);
+          updateLocalStorage(old_data,ALERTED_PINPOINTS)
+        }
+      })
+      
     }
 
     
@@ -237,6 +254,8 @@ function weatherInfo (pinPointIndex) {
 // function to popup note
 function notePopup(){
   document.getElementById("popup-note").classList.toggle("active");
+  document.getElementById("store-notes").style.display = "block";
+  document.getElementById("submitted").style.display = "none";
 }
 
 // Get pinPoints list from local storage (if applicable)

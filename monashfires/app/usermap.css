@@ -125,21 +125,55 @@ animation: ripple 600ms linear;
 
 }
 
+.note-area{
+    border-color: black;
+    
+    padding: 15px;
+    width: 800px;
+    height: 250px;
+
+}
+
+
 #note-body {
-    text-transform: capitalize;
     font-size: large;
     vertical-align: bottom;
-    height: 300px;
-    width: 600px;
+    height: 150px;
+    width: 730px;
     position: absolute;
-    top: 300px;
-    left: 120px;
+    bottom: 50px;
+    left: 60px;
 
 }
 
 #note-title {
-    position: absolute;
-    top: 220px;
-    left: 120px;
+    width:500px;
+    margin-left: 2rem;
+    text-align: left;
+}
+
+
+
+#report-user {
+    padding: 15px;
+    width: 200px;
+    margin-left: 100px;
+}
+
+.report-details {
+    width: 500px;
+    padding: 15px;
+    margin-left: 90px;
+    font-size: large;
+    text-align: left;
+    color: black;
+    height:200px;
+
+}
+
+#details {
+    font-size: 30px;
+    line-height: 50px;
+    margin-bottom: 20px;
 
 }

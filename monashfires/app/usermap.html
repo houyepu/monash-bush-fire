@@ -83,11 +83,15 @@
       <!--popup for alert-->
       <div class = "popup" id="popup-note">
         <div class ="overlay"></div>
-        <div class ="note-content">
-          <div id = "store-notes">
+        <div class ="note-content" id="note-content">
+          <div id="submitted" style="display: none;">
+            <h1>Thank you</h1>
+          </div>
+          <div id = "store-notes" style= "display: none;">
+            <!--will be modified through js-->
           </div>
           <div class ="close-btn" onclick="notePopup()">&times;</div>
-        </div>
+        </div> 
       </div>
       <form class="box" method= "POST">
         <h1>Pinpoints<br></h1>
