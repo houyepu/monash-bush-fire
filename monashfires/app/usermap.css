@@ -14,16 +14,17 @@ body{
 }
 .box{
     width: 520px;
-    height: 650px;
+    height: 610px;
     padding: 20px;
     border: solid #000000;
     position: absolute;
-    top: 53%;
+    top: 50%;
     left: 70%;
     float: right;
     transform: translate(-50%,-50%);
     background: #ffffff;
     text-align: middle;
+    border-radius: 25px;
 }
 .box h1{
     color:rgb(0, 0, 0);
