@@ -88,10 +88,36 @@ function plot_marker(){
         
         // make a marker for each feature and add to the map
         let marker1 = new mapboxgl.Marker(el); 
+        // table for pop up
+        let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 10px;">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric"><h7>${pinPoint[i].locationInfo.name}</h7></th>
+            <td><span class="material-icons">thermostat</span></td>
+        </thead>
+        <tbody id = "weatherTable-origin">
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Temperature</td>
+            <td>${currentPinPoint.temperature}&#8451;</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Humidity</td>
+            <td>${currentPinPoint.relHumidity}%</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
+            <td>${currentPinPoint.windSpeed} km/h</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">Fire index</td>
+            <td>${fire_index[i].toFixed(2)} knots</td>
+        </tr>
+        </tbody>
+        </table>`
         //Set location of markers
         marker1.setLngLat(coordinates_array[i]);
-        marker1.setPopup(new mapboxgl.Popup({ offset: 25 })
-        .setHTML(`<h3>${pinPoint[i].locationInfo.name}</h3><p>temperature = ${currentPinPoint.temperature}</p> <p>rel Humidity = ${currentPinPoint.relHumidity}</p>  <p>wind speed = ${currentPinPoint.windSpeed}</p> <p>fire index = ${fire_index[i]}</p>`))
+        marker1.setPopup(new mapboxgl.Popup({ offset: 45 })
+        .setHTML(desc))
         //Add markers to the map
         marker1.addTo(map1);
     }
