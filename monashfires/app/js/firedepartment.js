@@ -91,7 +91,7 @@ function plot_marker(){
         //Set location of markers
         marker1.setLngLat(coordinates_array[i]);
         marker1.setPopup(new mapboxgl.Popup({ offset: 25 })
-        .setHTML(`<h3>PinPoint data</h3><p>temperature = ${currentPinPoint.temperature}</p> <p>rel Humidity = ${currentPinPoint.relHumidity}</p>  <p>wind speed = ${currentPinPoint.windSpeed}</p> <p>fire index = ${fire_index[i]}</p>`))
+        .setHTML(`<h3>${pinPoint[i].locationInfo.name}</h3><p>temperature = ${currentPinPoint.temperature}</p> <p>rel Humidity = ${currentPinPoint.relHumidity}</p>  <p>wind speed = ${currentPinPoint.windSpeed}</p> <p>fire index = ${fire_index[i]}</p>`))
         //Add markers to the map
         marker1.addTo(map1);
     }
