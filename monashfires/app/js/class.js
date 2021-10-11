@@ -2,6 +2,8 @@ USERS_LIST_KEY = 'aboevinoinin81s81';
 KEY_PIN_POINTS = 'cminv1bv8baps8w8812s28';
 SIGNED_IN_USER_KEY ='ivno2vnvnavnxpdv92oci91s';
 ALERTED_PINPOINTS = 'Alerted_pinpoints'
+
+// In total there are four classes PinPoint User Alert UserList 
 class PinPoint {
   constructor (coordinates_lng,coordinates_lat) {
     this.coordinates_lng = coordinates_lng;
@@ -9,9 +11,6 @@ class PinPoint {
     this.locationInfo = {};
     this.colour = '';
     this.report = {}
-    //this.name = '';
-    //this.note = '';
-    // this.locationInfo = {};
   }
 
   get coordinates () {
@@ -26,10 +25,6 @@ class PinPoint {
     return this.note;
   }
 
-  // get colour () {
-  //   return this.colour
-  // }
-
   set coordinates (newCoords) {
     this.coordinates = newCoords;
   }
@@ -42,24 +37,12 @@ class PinPoint {
     this.note = newNote;
   }
 
-  // set colour (newColour) {
-  //   this.colour = newColour;
-  // }
-
-  saveCoordinates (_username, _watchList, _coordinates) {
-
-
-  }
-
   fromData(data) {
     //Turns object into class data
     this.coordinates_lng = data.coordinates_lng;
     this.coordinates_lat = data.coordinates_lat;
     this.locationInfo = data.locationInfo;
     this.colour = data.colour;
-    //this.name = data.name;
-    //this.note = data.note;
-    //this.locationInfo = data.locationInfo;
   }
 
 }
@@ -86,18 +69,14 @@ class User {
   }
 
   addPinpoints (pin_point_data) {
+
     this.watchList.push(pin_point_data);
-  }
-
-  removePinpoints () {
-
   }
 
   fromData(data)
 	{
     //Turns object into class data
     //Values for all the individual pinpoints
-
     let dataArray = data.watchList;
     if (dataArray.length > 0) {
       for(let i = 0; i < dataArray.length; i++)
@@ -157,24 +136,15 @@ class Alert {
 class UserList {
   constructor () {
     this._users = [];
-    // this._authorisedUser = [];
   }
 
   get users () {
     return this._users;
   }
 
-  // get authorisedUser () {
-  //   return this._authorisedUser;
-  // }
-
   addUser (newUser) {
     this._users.push(newUser);
   }
-
-  // addAuthorised (newUser){
-  //   this._authorisedUser.push(newUser);
-  // }
 
 
   fromData(data)
@@ -191,19 +161,6 @@ class UserList {
 			// then adding this user into the _trip array
 			this._users.push(newUser);
     }
-    // let dataArray2 = data._authorisedUser;
-    // for(let i = 0; i < dataArray2.length; i++)
-    // {
-    //   // create the user class instance
-    //   let newUser = new User();
-    //   // restoring the user at index i
-    //   newUser.fromData(dataArray2[i]);
-    //   // then adding this user into the _trip array
-    //   this._authorisedUser.push(newUser);
-    //     }
-
-        //Values for all the user-related data
-        //None
 	}
 
 }
@@ -292,18 +249,16 @@ if (checkIfDataExistsLocalStorage(USERS_LIST_KEY)) {
     UserListData = getDataLocalStorage(USERS_LIST_KEY);
 
     User_List.fromData(UserListData);
-    
-    // console.log(getDataLocalStorage(SIGNIN_KEY))
 }
 else {
     User_List = new UserList();
 }
 
-console.log('User List: (User_List)');
-    console.log(User_List);
+// If there are no Alerted pin points initialise it as an empty array
 if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS) == false){
   updateLocalStorage([],ALERTED_PINPOINTS);
 }
+
 // Check if user logged in, and if so make current user available to access
 if (checkIfDataExistsLocalStorage(SIGNED_IN_USER_KEY)) {
   
