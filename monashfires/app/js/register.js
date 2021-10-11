@@ -68,8 +68,8 @@ function check(Confirm_password,password,Authorised,Authorised_code){
         alert("Passwords do not match.");
         return false;
     }
-    if (Authorised != Authorised_code){
-        alert("Authorised code do not match.");
+    if (Authorised == Authorised_code){
+        alert("Authorisation approved.");
         return false;
     }
 }
