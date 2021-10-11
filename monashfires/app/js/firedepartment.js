@@ -89,7 +89,7 @@ function plot_marker(){
         // make a marker for each feature and add to the map
         let marker1 = new mapboxgl.Marker(el); 
         // table for pop up
-        let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 10px;">
+        /*let desc = `<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 10px;">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric"><h7>${pinPoint[i].locationInfo.name}</h7></th>
@@ -113,7 +113,13 @@ function plot_marker(){
             <td>${fire_index[i].toFixed(2)} </td>
         </tr>
         </tbody>
-        </table>`
+        </table>`*/
+        let desc = `<p>${pinPoint[i].locationInfo.name}, ${pinPoint[i].locationInfo.adminArea}</p>
+        <p>Fire index: ${fire_index[i].toFixed(2)}</p>
+        <p>${pinPoint[i].report}</p>
+        <td bgcolor=white><button value=infoi class=btn type=button onclick=weatherInfo(${i})>Info</button></td>
+        `
+
         //Set location of markers
         marker1.setLngLat(coordinates_array[i]);
         marker1.setPopup(new mapboxgl.Popup({ offset: 45 })
@@ -133,4 +139,13 @@ function fireDanger(currentPinPoint) {
 
     var k=2*(Math.exp((.987*Math.log(h+0.001))-.45-(.0345*c)+(.0338*b)+(.0234*d)));//forest mk5
     return k
+}
+
+function weatherInfo(pinPointIndex) {
+    // Update local storage with pinPoint to display
+  PINPOINT_WEATHER_KEY = 'bv2navpndlkuqoodn100d8;';
+  PREVIOUS_PAGE_KEY = 'cien0ic10cn0imaosicn01cn'
+  updateLocalStorage(pinPoint[pinPointIndex], PINPOINT_WEATHER_KEY);
+  updateLocalStorage('firedepartment.html', PREVIOUS_PAGE_KEY);
+  location.href = 'weather.html';
 }

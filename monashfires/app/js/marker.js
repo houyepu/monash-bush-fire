@@ -232,17 +232,27 @@ function alertFunc(index) {
       // when submit button is clicked
       document.getElementById("report-submit").addEventListener("click", function() {
         let note = document.getElementById("note-body").value; // the text note written
-        let alert = new Alert(current_user._username, reported_date, reported_time) // create a new alert
-        alert.addNote(note) // calling addNote method to store the text note
-        pinpoint.report = alert; // store the info alert to report
+        // let alert = new Alert(current_user._username, reported_date, reported_time) // create a new alert
+        // alert.addNote(note) // calling addNote method to store the text note
+        // pinpoint.report = alert; // store the info alert to report
+
+        pinPoints[index].report = note;
+        if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
+          var old_data = getDataLocalStorage(ALERTED_PINPOINTS);
+          old_data.push(pinPoints[index]);
+          updateLocalStorage(old_data,ALERTED_PINPOINTS)
+        } 
+        
+
+
         document.getElementById("store-notes").style.display = "none";
         document.getElementById("submitted").style.display = "block";
         
-        if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
-          var old_data=getDataLocalStorage(ALERTED_PINPOINTS);
-          old_data.push(pinpoint);
-          updateLocalStorage(old_data,ALERTED_PINPOINTS)
-        }
+        // if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
+        //   var old_data=getDataLocalStorage(ALERTED_PINPOINTS);
+        //   old_data.push(pinpoint);
+        //   updateLocalStorage(old_data,ALERTED_PINPOINTS)
+        // }
       })
       
     }
@@ -262,7 +272,9 @@ function alertFunc(index) {
 function weatherInfo (pinPointIndex) {
   // Update local storage with pinPoint to display
   PINPOINT_WEATHER_KEY = 'bv2navpndlkuqoodn100d8;';
+  PREVIOUS_PAGE_KEY = 'cien0ic10cn0imaosicn01cn';
   updateLocalStorage(pinPoints[pinPointIndex], PINPOINT_WEATHER_KEY);
+  updateLocalStorage('usermap.html', PREVIOUS_PAGE_KEY);
   location.href = 'weather.html';
 }
 

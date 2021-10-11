@@ -2,6 +2,7 @@
 
 /* KEYS */
 PINPOINT_WEATHER_KEY = 'bv2navpndlkuqoodn100d8;';
+PREVIOUS_PAGE_KEY = 'cien0ic10cn0imaosicn01cn';
 const _username = encodeURIComponent('monash-university');
 const _password = encodeURIComponent('CvdYP1GCPxyy');
 var token = null;
@@ -220,6 +221,13 @@ function rotateArrow() {
 // rotateArrow();
 
 function backButton() {
+    // Returns user back to the page they were just on
+    // Remove pinpoint from local storage
     localStorage.removeItem(PINPOINT_WEATHER_KEY);
-    location.href='usermap.html';
+    
+    // Get destination location and remove from local storage
+    destinationURL = getDataLocalStorage(PREVIOUS_PAGE_KEY);
+    localStorage.removeItem(PREVIOUS_PAGE_KEY);
+
+    location.href = destinationURL;
 }

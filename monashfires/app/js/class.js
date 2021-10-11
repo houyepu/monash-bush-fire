@@ -43,6 +43,7 @@ class PinPoint {
     this.coordinates_lat = data.coordinates_lat;
     this.locationInfo = data.locationInfo;
     this.colour = data.colour;
+    this.report = data.report;
   }
 
 }
