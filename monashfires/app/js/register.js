@@ -18,15 +18,20 @@ function register(){
     // grabbing confirmed password
     var Authorised= document.getElementById('Authorised').value;
     // check passwords are match 
-    check(Confirm_password,password,Authorised,Authorised_code);
-    // if the authorised code matches then 
-    if(Authorised == Authorised_code){
-        // add authorised user
-        authorised_user(username, password,email);
-    }  
-    else{
-        // add normal user
-        user(username,email,password);
+    if (check(Confirm_password,password,Authorised,Authorised_code)){
+        // if the authorised code matches then 
+        if(Authorised == Authorised_code){
+            // add authorised user
+            authorised_user(username, password,email);
+        }  
+        else{
+            // add normal user
+            user(username,email,password);
+    }
+    }
+    else {
+        alert("Passwords do not match");
+        location.href = 'register.html';
     }
 }
 
@@ -70,6 +75,6 @@ function check(Confirm_password,password,Authorised,Authorised_code){
     }
     if (Authorised == Authorised_code){
         alert("Authorisation approved.");
-        return false;
     }
+    return true
 }
