@@ -201,6 +201,7 @@ function alertFunc(index) {
       user.fromData(user_list)
       let current_user = user._users[current_user_index]; // name of the user
       // html generating needed infor
+      if (pinpoint.locationInfo.adminArea!=null){
       noteHTML = `<h2 id = "report-title">Report Detail</h2>
         <div class = "report-details">
           <p id ="details">Location: ${pinpoint.locationInfo.name}, ${pinpoint.locationInfo.adminArea}</p>
@@ -212,7 +213,21 @@ function alertFunc(index) {
           <textarea id= "note-body" placeholder="type here..."></textarea>
         </div>
       </div>
-      <button id="report-submit"">Submit</button>`
+      <button class=btn1 id="report-submit"">Submit</button>`}
+      else{
+        noteHTML = `<h2 id = "report-title">Report Detail</h2>
+        <div class = "report-details">
+          <p id ="details">Location: ${pinpoint.locationInfo.name}</p>
+          <p id ="details">Time: ${reported_time} </p>
+          <p id ="details">Date: ${reported_date} </p>
+        </div>
+        <div class="note-area">
+          <h3 id = "note-title">Report Explanation</h3>
+          <textarea id= "note-body" placeholder="type here..."></textarea>
+        </div>
+      </div>
+      <button class=btn1 id="report-submit"">Submit</button>`
+      }
       document.getElementById("store-notes").innerHTML = noteHTML // for html display
       // when submit button is clicked
       document.getElementById("report-submit").addEventListener("click", function() {
