@@ -94,7 +94,7 @@ function retrieveWeatherData() {
             // Update page to display data correctly
             resetConditions();
             updateSliders();
-            fireDanger();
+            // fireDanger();
             rotateArrow();
         }
     )
@@ -127,6 +127,8 @@ function resetConditions () {
 
     var visibilityOutput = document.getElementById("visibilityOutput");
     visibilityOutput.innerHTML = `${Math.round(currentPinPoint.visibility/1000*100)/100} km`;
+    
+    fireDanger();
 }
 
 // Update sliders automatically
