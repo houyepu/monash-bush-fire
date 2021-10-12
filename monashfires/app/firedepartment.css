@@ -132,14 +132,14 @@ cursor: pointer;
 }
 
 .fire-legend {
-    padding: 15px;
-    width: 850px;
-    max-width: 850px;
-    height: 700px;
+    width: 520px;
+    height: 610px;
+    padding: 20px;
     position: absolute;
-    left: 900px;
-    top: 5rem;
-
+    top: 45%;
+    left: 65%;
+    float: right;
+    transform: translate(-50%,-50%);
 }
 #fire-index {
     position: center;
