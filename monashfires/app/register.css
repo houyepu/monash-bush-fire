@@ -8,7 +8,8 @@ body{
 }
 .box{
     width: 700px;
-    padding: 50px;
+    max-width: 726px;
+    padding:10px;
     border: solid #000000;
     position: absolute;
     top: 50%;
@@ -58,4 +59,36 @@ body{
 }
 .box input[type = "button"]:hover{
     background:#2ecc71;
+}
+
+#register-image {
+    float: left; 
+    margin: 50px 0px 0px 10px; 
+    width: 350px;
+}
+
+@media only screen and (max-width: 758px){
+    .box{
+        height: 80%;
+        width: 90%;
+        max-height: 550px;
+        
+    }
+
+    #register-image {
+        display: none;
+    }
+
+    .box input[type = "text"],.box input[type = "password"],.box input[type = "email"],.box input[type = "Confirm password"],.box input[type = "Authorised"]{
+        width:80%;
+        max-width: 280px;
+        max-height: 10px;
+    }
+
+    .box input[type = "button"]{
+        width:80%;
+        max-width: 125px;
+
+    }
+
 }
