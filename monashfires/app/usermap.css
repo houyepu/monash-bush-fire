@@ -140,14 +140,10 @@ animation: ripple 600ms linear;
     padding: 15px;
     height: 600px;
     position: relative;
-
-
-
 }
 
 .note-area{
     border-color: black;
-    
     padding: 15px;
     width: 800px;
     height: 250px;
