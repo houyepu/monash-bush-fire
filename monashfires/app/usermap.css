@@ -193,3 +193,44 @@ animation: ripple 600ms linear;
     margin-bottom: 20px;
 
 }
+
+@media only screen and (max-width: 1348px){
+    .box{
+
+        width: 35%;
+        max-height: 670px;
+        top: 50%;
+        left: 75%;
+        float: right;
+        transform: translate(-50%,-50%);
+        
+    }
+
+    .box h1{
+        font-size: 300%;
+        text-align: center;
+
+    }
+
+
+}
+
+@media only screen and (max-width: 1068px){
+    .box{
+        height: 80%;
+        width: 70%;
+        max-height: 250px;
+        top: 76%;
+        left: 50%;
+        float: right;
+        transform: translate(-50%,-50%);
+        
+    }
+
+    .box h1{
+        font-size: 20px;
+        text-align: center;
+
+    }
+}
+

@@ -131,23 +131,41 @@ cursor: pointer;
     position:absolute;
 }
 
-.fire-legend {
-    width: 520px;
-    height: 610px;
+.fire-legend img {
+    width: 800px;
+    height: 800px;
     padding: 20px;
     position: absolute;
-    top: 45%;
-    left: 65%;
+    top: 50%;
+    left: 70%;
     float: right;
     transform: translate(-50%,-50%);
 }
-#fire-index {
-    position: center;
-    border: solid;
 
-    
-    
-}
 .outline_text {
     border-style: solid;
+}
+
+@media only screen and (max-width: 1780px){
+    .fire-legend img{
+
+        width: 45%;
+        top: 50%;
+        left: 75%;
+        float: right;
+        transform: translate(-50%,-50%);
+        
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .fire-legend img{
+        height:35%;
+        width: 90%;
+        top: 80%;
+        left: 50%;
+        float: right;
+        transform: translate(-50%,-50%);
+        
+    }
 }

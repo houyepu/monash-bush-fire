@@ -26,6 +26,10 @@ body{
 }
 .mapdiv{
     position: absolute;
+    max-width: 1450px;
+    max-height: 667px;
+    min-width: 375px;
+    min-height: 667px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -80,10 +84,4 @@ body{
     border-radius: 15px;
 }
 
-.mapdiv {
-    max-width: 1450px;
-    max-height: 600px;
-    min-width: 375px;
-    min-height: 667px;
-}
 
