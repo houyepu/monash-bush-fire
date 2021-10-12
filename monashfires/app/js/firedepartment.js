@@ -117,17 +117,21 @@ function plot_marker(){
         let desc = '';
         if (pinPoint[i].locationInfo.adminArea!=null){
         desc = `<p><b>${pinPoint[i].locationInfo.name}, ${pinPoint[i].locationInfo.adminArea}</b></p>
+        <p><b>Reported Date:</b> ${pinPoint[i].report.reported_date}</p>
+        <p><b>Reported Date:</b> ${pinPoint[i].report.reported_time}</p>
         <p><b>Fire index:</b> ${fire_index[i].toFixed(2)}</p>
         <p><b>Message: </b></p>
-        <p style="border:2px; border-style:solid; border-color:#000000; padding: 1em;">${pinPoint[i].report}</p>
+        <p style="border:2px; border-style:solid; border-color:#000000; padding: 1em;">${pinPoint[i].report.note}</p>
         <td bgcolor=white><button value=infoi class=btn type=button onclick=weatherInfo(${i})>Info</button></td>
         <td bgcolor=white><button value=infoi class=btn type=button onclick=deletePinPoint(${i})>Delete</button></td>
         `}
         else{
         desc = `<p><b>${pinPoint[i].locationInfo.name}</b></p>
+        <p><b>Reported Date:</b> ${pinPoint[i].report.reported_date}</p>
+        <p><b>Reported Date:</b> ${pinPoint[i].report.reported_time}</p>
         <p><b>Fire index:</b> ${fire_index[i].toFixed(2)}</p>
         <p><b>Message: </b></p>
-        <p style="border:2px; border-style:solid; border-color:#000000; padding: 1em;">${pinPoint[i].report}</p>
+        <p style="border:2px; border-style:solid; border-color:#000000; padding: 1em;">${pinPoint[i].report.note}</p>
         <td bgcolor=white><button value=infoi class=btn type=button onclick=weatherInfo(${i})>Info</button></td>
         <td bgcolor=white><button value=infoi class=btn type=button onclick=deletePinPoint(${i})>Delete</button></td>
         `

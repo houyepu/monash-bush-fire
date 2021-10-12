@@ -194,6 +194,11 @@ animation: ripple 600ms linear;
 
 }
 
+#checkmark {
+    width: 300px;
+    transform: translate(0%,20%);
+}
+
 @media only screen and (max-width: 1348px){
     .box{
 

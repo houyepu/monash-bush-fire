@@ -154,6 +154,7 @@ cursor: pointer;
         left: 75%;
         float: right;
         transform: translate(-50%,-50%);
+        image-rendering: pixelated;
         
     }
 }
@@ -166,6 +167,7 @@ cursor: pointer;
         left: 50%;
         float: right;
         transform: translate(-50%,-50%);
+        image-rendering: pixelated;
         
     }
 }

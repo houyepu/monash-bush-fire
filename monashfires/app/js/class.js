@@ -104,8 +104,7 @@ class User {
 // created a new class Alert
 class Alert {
 
-  constructor(current_user,  reported_time, reported_date){
-    this.current_user = current_user;
+  constructor(reported_time, reported_date){
     this.reported_time = reported_time;
     this.reported_date = reported_date;
     this.note = "";
@@ -125,7 +124,6 @@ class Alert {
   }
 
   fromData(data) {
-    this.current_user = data.currert_user;
     this.reported_time = data.reported_time;
     this.reported_date = data.reported_date;
     this.note = data.note;

@@ -232,11 +232,13 @@ function alertFunc(index) {
       // when submit button is clicked
       document.getElementById("report-submit").addEventListener("click", function() {
         let note = document.getElementById("note-body").value; // the text note written
-        // let alert = new Alert(current_user._username, reported_date, reported_time) // create a new alert
-        // alert.addNote(note) // calling addNote method to store the text note
-        // pinpoint.report = alert; // store the info alert to report
-
-        pinPoints[index].report = note;
+        let alert = new Alert(reported_time, reported_date) // create a new 
+        alert.addNote(note) // calling addNote method to store the text note
+        pinPoints[index].report = alert;
+        document.getElementById("submitted").innerHTML = `
+        <h1>Thank you ${current_user._username}</h1>
+        <h3>Your response has been submitted</h3>
+        <img id="checkmark" src="img/checkmark.png">`
         if (checkIfDataExistsLocalStorage(ALERTED_PINPOINTS)){
           var old_data = getDataLocalStorage(ALERTED_PINPOINTS);
           old_data.push(pinPoints[index]);
