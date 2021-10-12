@@ -59,3 +59,35 @@ body{
 .box input[type = "button"]:hover{
     background:#2ecc71;
 }
+
+#login-image {
+    float: left; 
+    margin: 10px 0px 0px -50px; 
+    width:360px;
+}
+
+@media only screen and (max-width: 800px){
+    .box{
+        height: 70%;
+        width: 70%;
+        max-height: 400px;
+        
+    }
+
+    #login-image {
+        display: none;
+    }
+
+    .box input[type = "text"],.box input[type = "password"]{
+        width:80%;
+        max-width: 280px;
+        max-height: 10px;
+    }
+
+    .box input[type = "button"]{
+        width:80%;
+        max-width: 125px;
+
+    }
+
+}
