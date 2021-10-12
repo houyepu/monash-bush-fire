@@ -148,3 +148,6 @@ cursor: pointer;
     
     
 }
+.outline_text {
+    border-style: solid;
+}

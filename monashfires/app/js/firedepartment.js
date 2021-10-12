@@ -114,10 +114,12 @@ function plot_marker(){
         </tr>
         </tbody>
         </table>`*/
-        let desc = `<p>${pinPoint[i].locationInfo.name}, ${pinPoint[i].locationInfo.adminArea}</p>
-        <p>Fire index: ${fire_index[i].toFixed(2)}</p>
-        <p>${pinPoint[i].report}</p>
+        let desc = `<p><b>${pinPoint[i].locationInfo.name}, ${pinPoint[i].locationInfo.adminArea}</b></p>
+        <p><b>Fire index:</b> ${fire_index[i].toFixed(2)}</p>
+        <p><b>Message: </b></p>
+        <p style="border:2px; border-style:solid; border-color:#000000; padding: 1em;">${pinPoint[i].report}</p>
         <td bgcolor=white><button value=infoi class=btn type=button onclick=weatherInfo(${i})>Info</button></td>
+        <td bgcolor=white><button value=infoi class=btn type=button onclick=deletePinPoint(${i})>Delete</button></td>
         `
 
         //Set location of markers
@@ -149,3 +151,15 @@ function weatherInfo(pinPointIndex) {
   updateLocalStorage('firedepartment.html', PREVIOUS_PAGE_KEY);
   location.href = 'weather.html';
 }
+
+function deletePinPoint (i) {
+    // Delete array at the element
+    let localStoragePinPoints = getDataLocalStorage(ALERTED_PINPOINTS);
+    localStoragePinPoints.splice(i,1);
+
+    // Update local storage
+    updateLocalStorage(localStoragePinPoints,ALERTED_PINPOINTS)
+
+    // Refresh page
+    location.href = ''
+  }
