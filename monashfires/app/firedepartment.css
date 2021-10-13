@@ -132,14 +132,15 @@ cursor: pointer;
 }
 
 .fire-legend img {
-    width: 800px;
-    height: 800px;
-    padding: 20px;
+    width: 650px;
+    height: 650px;
+    padding: 3px;
     position: absolute;
     top: 50%;
     left: 70%;
     float: right;
     transform: translate(-50%,-50%);
+    background-color: black;
 }
 
 .outline_text {
