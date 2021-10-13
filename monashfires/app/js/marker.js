@@ -150,6 +150,11 @@ function savePinPoint (i) {
   let cur_user = users._users[signinuser]
   //checking if its in the user account already
   let existingPinpointIndex = -1;
+  // assigned coordinates data into users
+  users._users[signinuser].watchList.push(coordinates_data);
+  // update data
+  updateLocalStorage(users,USERS_LIST_KEY);
+  /*
   console.log(users)
   if(cur_user.watchList==null){
     existingPinpointIndex = 0;
@@ -163,7 +168,7 @@ function savePinPoint (i) {
     users._users[signinuser].watchList.push(coordinates_data);
     // update data
     updateLocalStorage(users,USERS_LIST_KEY);
-  }
+  }*/
 }
 
 function deletePinPoint (i) {
