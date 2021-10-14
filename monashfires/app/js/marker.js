@@ -154,21 +154,6 @@ function savePinPoint (i) {
   users._users[signinuser].watchList.push(coordinates_data);
   // update data
   updateLocalStorage(users,USERS_LIST_KEY);
-  /*
-  console.log(users)
-  if(cur_user.watchList==null){
-    existingPinpointIndex = 0;
-  }
-  else{
-    existingPinpointIndex = cur_user.watchList.findIndex(item => item == pinPoints[i]);
-  }
-  // Find index in user's watchlist where the current pinpoint to be added matches
-  if (existingPinpointIndex == -1){
-    // assigned coordinates data into users
-    users._users[signinuser].watchList.push(coordinates_data);
-    // update data
-    updateLocalStorage(users,USERS_LIST_KEY);
-  }*/
 }
 
 function deletePinPoint (i) {
